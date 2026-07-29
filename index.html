@@ -256,7 +256,7 @@ footer{background:#0A0E18;padding:56px 80px 28px}
   <a href="#" class="logo-text">EITS<span>.</span>Fiji</a>
   <ul class="nav-links">
     <li class="nav-item">
-      <a href="#services" class="nav-link">Services <span class="caret">▾</span></a>
+      <a href="EITS_Services.html" class="nav-link">Services <span class="caret">▾</span></a>
       <ul class="dropdown-menu">
         <li><a href="EITS_Service_Managed_IT.html">Managed IT Services</a></li>
         <li><a href="EITS_Service_Structural_Cabling.html">Structural Cabling</a></li>
@@ -277,7 +277,7 @@ footer{background:#0A0E18;padding:56px 80px 28px}
         <li><a href="EITS_Product_Resort.html">Resort Management Solution</a></li>
       </ul>
     </li>
-    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="EITS_About_Us.html" class="nav-link">About</a></li>
     <li><a href="#industries" class="nav-link">Industries</a></li>
     <li><a href="#xero" class="nav-link">Xero</a></li>
     <li><a href="EITS_Contact_Us.html" class="nav-link">Contact</a></li>
@@ -292,7 +292,7 @@ footer{background:#0A0E18;padding:56px 80px 28px}
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-item" id="mobileServices">
     <div class="mobile-item-head" onclick="toggleSubmenu('mobileServices')">
-      <a href="#services" onclick="toggleMenu()">Services</a>
+      <a href="EITS_Services.html">Services</a>
       <span class="mobile-caret">▾</span>
     </div>
     <div class="mobile-submenu">
@@ -318,7 +318,7 @@ footer{background:#0A0E18;padding:56px 80px 28px}
       <a href="EITS_Product_Resort.html">Resort Management Solution</a>
     </div>
   </div>
-  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="EITS_About_Us.html">About</a>
   <a href="#industries" onclick="toggleMenu()">Industries</a>
   <a href="#xero" onclick="toggleMenu()">Xero</a>
   <a href="EITS_Contact_Us.html">Contact</a>
@@ -541,7 +541,7 @@ const nav = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);
   document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
-  const sections = ['home','services','about','industries','xero','contact'];
+  const sections = ['home','industries','xero','contact'];
   let current = '';
   sections.forEach(id => { const el = document.getElementById(id); if(el && window.scrollY >= el.offsetTop - 120) current = id; });
   document.querySelectorAll('.nav-link').forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
