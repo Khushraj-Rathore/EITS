@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Resort Management Solution — EITS Fiji</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#2060E0;--navy:#001850;--navy2:#0A2040;--cyan:#00A0E0;--dark:#111827;--ink:#1F2937;--muted:#6B7280;--border:#E5E7EB;--bg:#F9FAFB;--bg2:#EFF6FF;--white:#fff;--ff:'Inter',sans-serif;--fd:'Raleway',sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:var(--ff);color:var(--dark);background:var(--white);overflow-x:hidden}
+nav{background:var(--navy);padding:0 80px;height:78px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(0,24,80,.5)}
+.logo-text{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;letter-spacing:.02em;text-decoration:none}
+.logo-text span{color:var(--cyan)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;padding:4px 0;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--cyan)}
+.nav-right{display:flex;gap:12px;align-items:center}
+.btn-ghost-nav{padding:9px 18px;border:1.5px solid rgba(255,255,255,.25);color:#fff;border-radius:6px;font-size:12px;font-weight:600;background:transparent;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex}
+.btn-ghost-nav:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.08)}
+.btn-cyan-nav{padding:10px 22px;background:var(--cyan);border:none;color:#fff;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex}
+.btn-cyan-nav:hover{background:#0090c8;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mob-menu{display:none;position:fixed;top:78px;left:0;right:0;background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.1);padding:24px;z-index:99;flex-direction:column;gap:14px}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:15px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+@media(max-width:768px){nav{padding:0 24px}.nav-links,.nav-right{display:none}.hamburger{display:flex}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity .65s ease,transform .65s ease}.reveal-l.visible{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(24px);transition:opacity .65s ease,transform .65s ease}.reveal-r.visible{opacity:1;transform:none}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
+.sec-title{font-family:var(--fd);font-size:44px;font-weight:900;color:var(--dark);line-height:1.1;letter-spacing:-.02em}
+.sec-title span{color:var(--blue)}.sec-title.light{color:#fff}.sec-title.light span{color:var(--cyan)}
+.btn-cy{padding:13px 26px;background:var(--cyan);border:none;color:#fff;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-cy:hover{background:#0090c8;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,160,224,.3)}
+.btn-blue{padding:13px 26px;background:var(--blue);border:none;color:#fff;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-blue:hover{background:var(--navy);transform:translateY(-1px)}
+.btn-wh-o{padding:12px 24px;background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-wh-o:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)}
+.btn-wh{padding:15px 28px;background:#fff;color:var(--blue);border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);white-space:nowrap;transition:.2s;text-decoration:none;display:inline-flex}
+.btn-wh:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.btn-ghost-wh{padding:13px 22px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--ff);white-space:nowrap;transition:.2s;text-decoration:none;display:inline-flex}
+.btn-ghost-wh:hover{background:rgba(255,255,255,.2)}
+.cta-strip{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);padding:72px 80px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.cta-h{font-family:var(--fd);font-size:38px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:12px}
+.cta-p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75}
+.cta-btns{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.cta-note{font-size:11px;color:rgba(255,255,255,.3);text-align:right}
+@media(max-width:768px){.cta-strip{grid-template-columns:1fr;padding:48px 24px}.cta-btns{align-items:flex-start}}
+.contact-band{background:var(--dark);padding:36px 80px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.cb-item{display:flex;align-items:center;gap:12px}
+.cb-ic{width:40px;height:40px;background:rgba(0,160,224,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.cb-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:2px}
+.cb-v{font-size:13px;font-weight:600;color:#fff}
+.cb-v a{color:#fff;text-decoration:none;transition:.2s}.cb-v a:hover{color:var(--cyan)}
+.cb-div{width:1px;height:36px;background:rgba(255,255,255,.1)}
+@media(max-width:768px){.contact-band{padding:28px 24px;flex-direction:column;align-items:flex-start}.cb-div{display:none}}
+footer{background:#0A0E18;padding:56px 80px 28px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ft-logo{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;margin-bottom:14px}
+.ft-logo span{color:var(--cyan)}
+.ft-brand p{font-size:12px;color:rgba(255,255,255,.32);line-height:1.8;max-width:240px}
+.ft-col h5{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;transition:.2s}
+.ft-col a:hover{color:rgba(255,255,255,.8)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:8px}
+@media(max-width:900px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){footer{padding:48px 24px 24px}.ft-grid{grid-template-columns:1fr}.ft-bottom{flex-direction:column}}
+.scroll-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--cyan);color:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;z-index:999;opacity:0;transform:translateY(16px);transition:.3s;box-shadow:0 4px 16px rgba(0,160,224,.4)}
+.scroll-top.show{opacity:1;transform:translateY(0)}.scroll-top:hover{background:#0090c8}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@media(max-width:768px){.sec-title{font-size:32px}}
+
+.hero{background:var(--navy);padding:96px 80px 72px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(32,96,224,.18),transparent 70%);top:-200px;right:-150px;pointer-events:none}
+.hero::after{content:'';position:absolute;width:350px;height:350px;background:radial-gradient(circle,rgba(0,160,224,.1),transparent 70%);bottom:-100px;left:60px;pointer-events:none}
+.hero-breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:24px;position:relative;z-index:1}
+.hero-breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none}.hero-breadcrumb a:hover{color:var(--cyan)}
+.hero-breadcrumb span{color:rgba(255,255,255,.25)}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(0,160,224,.15);border:1px solid rgba(0,160,224,.35);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;animation:fadeDown .6s ease;position:relative;z-index:1}
+.hero-grid{display:grid;grid-template-columns:55% 45%;gap:60px;align-items:center;position:relative;z-index:1}
+.hero h1{font-family:var(--fd);font-size:54px;font-weight:900;color:#fff;line-height:1.08;letter-spacing:-.03em;margin-bottom:18px;animation:fadeUp .7s ease .1s both}
+.hero h1 span{color:var(--cyan)}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:32px;animation:fadeUp .7s ease .2s both}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .7s ease .3s both}
+.hero-panel{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:28px 26px;animation:fadeLeft .8s ease .2s both}
+.hp-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center}
+.hp-live{font-size:9px;font-weight:700;padding:3px 9px;background:rgba(74,222,128,.2);color:#4ADE80;border-radius:100px;letter-spacing:.06em;text-transform:uppercase}
+.hp-feat{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.hp-feat:last-child{border-bottom:none}
+.hp-ic{width:32px;height:32px;border-radius:8px;background:rgba(0,160,224,.2);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.hp-name{font-size:13px;font-weight:600;color:#fff}
+.hp-sub{font-size:10px;color:rgba(255,255,255,.45);margin-top:2px}
+@media(max-width:900px){.hero{padding:60px 24px 48px}.hero-grid{grid-template-columns:1fr}.hero h1{font-size:38px}.hero-panel{display:none}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+
+/* OVERVIEW */
+#overview{padding:80px 80px;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.ov-l .sec-title{margin-bottom:18px}
+.ov-l p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:28px}
+.ov-r{background:var(--bg);border-radius:16px;padding:36px;border:1.5px solid var(--border)}
+.ov-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.ov-stat-list{display:flex;flex-direction:column;gap:0}
+.ovs{padding:16px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:14px}
+.ovs:last-child{border-bottom:none}
+.ovs-ic{width:36px;height:36px;background:#EFF6FF;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.ovs h4{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:2px}
+.ovs p{font-size:11px;color:var(--muted)}
+@media(max-width:900px){#overview{grid-template-columns:1fr;padding:60px 24px}}
+
+/* FEATURE MODULES */
+.feat-module{padding:80px 80px}
+.feat-module:nth-child(odd){background:var(--bg)}
+.feat-module:nth-child(even){background:var(--white)}
+.feat-module-inner{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.feat-module:nth-child(even) .feat-module-inner{direction:rtl}
+.feat-module:nth-child(even) .feat-module-inner>*{direction:ltr}
+.fm-label-wrap{padding-top:8px}
+.fm-label-wrap .sec-title{margin-bottom:10px}
+.fm-sub{font-size:14px;color:var(--muted);margin-bottom:28px;font-style:italic}
+.fm-intro{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:28px}
+.fm-cards{display:flex;flex-direction:column;gap:14px}
+.fm-card{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--white);border:1.5px solid var(--border);border-radius:12px;transition:.2s}
+.feat-module:nth-child(odd) .fm-card{background:var(--white)}
+.feat-module:nth-child(even) .fm-card{background:var(--bg)}
+.fm-card:hover{border-color:var(--cyan);box-shadow:0 4px 16px rgba(0,160,224,.08)}
+.fm-ic{width:42px;height:42px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px}
+.fm-card h4{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:5px}
+.fm-card p{font-size:12px;color:var(--muted);line-height:1.7}
+@media(max-width:900px){.feat-module{padding:60px 24px}.feat-module-inner{grid-template-columns:1fr;direction:ltr!important}}
+
+/* PAYROLL FEATURES LIST */
+#payroll-feats{padding:72px 80px;background:var(--navy)}
+.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:44px}
+.pf-item{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;font-size:13px;font-weight:500;color:rgba(255,255,255,.75);transition:.2s}
+.pf-item:hover{background:rgba(255,255,255,.1)}
+.pf-check{width:18px;height:18px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;flex-shrink:0;margin-top:2px;font-weight:700}
+@media(max-width:900px){.pf-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.pf-grid{grid-template-columns:1fr}}
+@media(max-width:768px){#payroll-feats{padding:60px 24px}}
+
+/* WHY */
+#why{padding:80px 80px;background:var(--bg)}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:48px}
+.wc{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:28px 24px;transition:.25s}
+.wc:hover{border-color:var(--cyan);box-shadow:0 6px 24px rgba(0,160,224,.08)}
+.wc-ic{font-size:28px;margin-bottom:14px;display:block}
+.wc h4{font-family:var(--fd);font-size:18px;font-weight:800;color:var(--dark);margin-bottom:8px}
+.wc p{font-size:13px;color:var(--muted);line-height:1.75}
+@media(max-width:768px){#why{padding:60px 24px}.why-grid{grid-template-columns:1fr}}
+
+/* OTHER PRODUCTS */
+#other-prods{padding:64px 80px;background:var(--white)}
+.op-grid{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.op-card{display:flex;align-items:center;gap:10px;padding:13px 18px;border:1.5px solid var(--border);border-radius:10px;text-decoration:none;transition:.2s;font-size:13px;font-weight:600;color:var(--dark);background:var(--bg)}
+.op-card:hover{border-color:var(--blue);color:var(--blue);background:var(--bg2)}
+.op-em{font-size:18px}
+@media(max-width:768px){#other-prods{padding:48px 24px}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="logo-text">EITS<span>.</span>Fiji</a>
+  <ul class="nav-links">
+    <li><a href="EITS_Services.html">Services</a></li>
+    <li><a href="EITS_Products.html" class="active">Products</a></li>
+    <li><a href="EITS_About_Us.html">About</a></li>
+    <li><a href="index.html#xero">Xero</a></li>
+    <li><a href="EITS_Contact_Us.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+6797220501" class="btn-ghost-nav">📞 +679 722 0501</a>
+    <a href="EITS_Contact_Us.html" class="btn-cyan-nav">Free Demo →</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="EITS_Services.html" onclick="toggleMenu()">Services</a>
+  <a href="EITS_Products.html" onclick="toggleMenu()">Products</a>
+  <a href="EITS_About_Us.html" onclick="toggleMenu()">About</a>
+  <a href="EITS_Contact_Us.html" onclick="toggleMenu()">Contact</a>
+</div>
+<div class="hero">
+  <div class="hero-breadcrumb">
+    <a href="index.html">Home</a><span>›</span>
+    <a href="EITS_Products.html">Products</a><span>›</span>
+    <span style="color:rgba(255,255,255,.65)">Resort Management Solution</span>
+  </div>
+  <div class="hero-pill">Hospitality · Resort Operations</div>
+  <div class="hero-grid">
+    <div>
+      <h1>All-In-One Resort<br>Management for <span>Fiji Hospitality</span></h1>
+      <p class="hero-sub">Running a resort requires seamless coordination across booking, guest services, housekeeping, and maintenance. At Express IT Solutions, we understand the complexities of resort management. Our solution streamlines operations, enhances guest experiences, and boosts profitability — from one intuitive platform.</p>
+      <div class="hero-btns">
+        <a href="EITS_Contact_Us.html" class="btn-cy">Request Free Demo →</a>
+        <a href="EITS_Products.html" class="btn-wh-o">All Products</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="hp-title">Key Features <span class="hp-live">● Live Demo Available</span></div>
+      
+    <div class="hp-feat"><div class="hp-ic">📅</div><div><div class="hp-name">Real-Time Reservation Management</div><div class="hp-sub">Manage bookings across all channels — your we...</div></div></div>
+    <div class="hp-feat"><div class="hp-ic">💲</div><div><div class="hp-name">Dynamic Pricing</div><div class="hp-sub">Set flexible rates based on demand, seasonali...</div></div></div>
+    <div class="hp-feat"><div class="hp-ic">👤</div><div><div class="hp-name">Guest Profiles</div><div class="hp-sub">Capture preferences, stay history, and specia...</div></div></div>
+    <div class="hp-feat"><div class="hp-ic">📲</div><div><div class="hp-name">Online Check-In/Out</div><div class="hp-sub">Offer guests the convenience of digital check...</div></div></div>
+    <div class="hp-feat"><div class="hp-ic">💬</div><div><div class="hp-name">Guest Communication Tools</div><div class="hp-sub">Send automated confirmation emails, special o...</div></div></div>
+    <div class="hp-feat"><div class="hp-ic">🔔</div><div><div class="hp-name">Request Management</div><div class="hp-sub">Capture and manage guest requests — housekeep...</div></div></div>
+    </div>
+  </div>
+</div>
+
+<section id="overview">
+  <div class="ov-l reveal-l">
+    <div class="sec-eyebrow">About This Product</div>
+    <h2 class="sec-title" style="margin-bottom:18px">Transform Your Resort Operations with Our All-In-One Solution</h2>
+    <p>Whether you operate a boutique resort or a chain of properties across Fiji, our Resort Management Solution delivers the tools to manage every aspect of your operation — reservations, guest profiles, housekeeping, payments, and multi-property reporting — from a single dashboard.</p>
+    <a href="EITS_Contact_Us.html" class="btn-blue">Get a Free Demo →</a>
+  </div>
+  <div class="ov-r reveal-r">
+    <div class="ov-title">What You Get with EITS</div>
+    <div class="ov-stat-list">
+    <div class="ovs"><div class="ovs-ic">🔒</div><div><h4>Secure & Reliable</h4><p>Enterprise-grade security on all data</p></div></div>
+    <div class="ovs"><div class="ovs-ic">🎧</div><div><h4>Expert Local Support</h4><p>Our Fiji team available whenever needed</p></div></div>
+    <div class="ovs"><div class="ovs-ic">🚀</div><div><h4>Quick Implementation</h4><p>Up and running in days, not months</p></div></div>
+    <div class="ovs"><div class="ovs-ic">🏆</div><div><h4>EITS Certified Setup</h4><p>Configured by our certified specialists</p></div></div></div>
+  </div>
+</section>
+
+
+<div class="feat-module">
+  <div class="feat-module-inner">
+    <div class="fm-label-wrap reveal-l">
+      <div class="sec-eyebrow">Simplify Reservations & Bookings</div>
+      <h3 class="sec-title" style="font-size:36px;margin-bottom:10px">Simplify Reservations & Bookings</h3>
+      <div class="fm-sub">Maximise occupancy and revenue effortlessly</div>
+    </div>
+    <div class="fm-cards reveal-r">
+        <div class="fm-card reveal">
+          <div class="fm-ic">📅</div>
+          <div><h4>Real-Time Reservation Management</h4><p>Manage bookings across all channels — your website, OTAs, and front desk — all in one place.</p></div>
+        </div>
+        <div class="fm-card reveal">
+          <div class="fm-ic">💲</div>
+          <div><h4>Dynamic Pricing</h4><p>Set flexible rates based on demand, seasonality, or special events to maximise revenue automatically.</p></div>
+        </div>
+        <div class="fm-card reveal">
+          <div class="fm-ic">👤</div>
+          <div><h4>Guest Profiles</h4><p>Capture preferences, stay history, and special requests to personalise every experience and improve loyalty.</p></div>
+        </div></div>
+  </div>
+</div>
+<div class="feat-module">
+  <div class="feat-module-inner">
+    <div class="fm-label-wrap reveal-l">
+      <div class="sec-eyebrow">Enhance Guest Experience</div>
+      <h3 class="sec-title" style="font-size:36px;margin-bottom:10px">Enhance Guest Experience</h3>
+      <div class="fm-sub">Deliver exceptional service at every touchpoint</div>
+    </div>
+    <div class="fm-cards reveal-r">
+        <div class="fm-card reveal">
+          <div class="fm-ic">📲</div>
+          <div><h4>Online Check-In/Out</h4><p>Offer guests the convenience of digital check-in and check-out — reducing wait times and improving satisfaction.</p></div>
+        </div>
+        <div class="fm-card reveal">
+          <div class="fm-ic">💬</div>
+          <div><h4>Guest Communication Tools</h4><p>Send automated confirmation emails, special offers, and pre/post-stay messages for seamless communication.</p></div>
+        </div>
+        <div class="fm-card reveal">
+          <div class="fm-ic">🔔</div>
+          <div><h4>Request Management</h4><p>Capture and manage guest requests — housekeeping, maintenance, dining — in real time.</p></div>
+        </div></div>
+  </div>
+</div>
+<div class="feat-module">
+  <div class="feat-module-inner">
+    <div class="fm-label-wrap reveal-l">
+      <div class="sec-eyebrow">Housekeeping & Maintenance</div>
+      <h3 class="sec-title" style="font-size:36px;margin-bottom:10px">Housekeeping & Maintenance</h3>
+      <div class="fm-sub">Keep every room at the highest standard</div>
+    </div>
+    <div class="fm-cards reveal-r">
+        <div class="fm-card reveal">
+          <div class="fm-ic">🧹</div>
+          <div><h4>Housekeeping Management</h4><p>Track room cleaning status and assign tasks to housekeeping staff with real-time visibility.</p></div>
+        </div>
+        <div class="fm-card reveal">
+          <div class="fm-ic">🔧</div>
+          <div><h4>Maintenance Requests</h4><p>Capture and resolve maintenance issues with real-time alerts and task tracking for swift resolution.</p></div>
+        </div>
+        <div class="fm-card reveal">
+          <div class="fm-ic">🏠</div>
+          <div><h4>Room Status Updates</h4><p>Automatically update room status (clean, occupied, maintenance) — visible to front desk and housekeeping instantly.</p></div>
+        </div></div>
+  </div>
+</div>
+<div class="feat-module">
+  <div class="feat-module-inner">
+    <div class="fm-label-wrap reveal-l">
+      <div class="sec-eyebrow">Financial Control & Reporting</div>
+      <h3 class="sec-title" style="font-size:36px;margin-bottom:10px">Financial Control & Reporting</h3>
+      <div class="fm-sub">Full visibility into your resort's performance</div>
+    </div>
+    <div class="fm-cards reveal-r">
+        <div class="fm-card reveal">
+          <div class="fm-ic">💰</div>
+          <div><h4>Revenue Management</h4><p>Monitor room rates, occupancy, and revenue in real time — adjust pricing and availability dynamically.</p></div>
+        </div>
+        <div class="fm-card reveal">
+          <div class="fm-ic">📊</div>
+          <div><h4>Accounting Integration</h4><p>Integrate with your accounting software for streamlined financial reporting and tax compliance.</p></div>
+        </div>
+        <div class="fm-card reveal">
+          <div class="fm-ic">📈</div>
+          <div><h4>Customisable Reports</h4><p>Generate reports on occupancy, revenue, guest demographics, and trends across all properties.</p></div>
+        </div></div>
+  </div>
+</div>
+
+
+<section id="why">
+  <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto">
+    <div class="sec-eyebrow">Why Choose EITS</div>
+    <h2 class="sec-title">Why Fiji Businesses<br>Choose <span>Resort Management Solution</span></h2>
+  </div>
+  <div class="why-grid">
+    <div class="wc reveal"><span class="wc-ic">🏨</span><h4>All-in-One Platform</h4><p>Reservations, guest services, housekeeping, payments, and reporting — all from a single platform.</p></div>
+    <div class="wc reveal"><span class="wc-ic">📈</span><h4>Scalable for Growth</h4><p>From a boutique resort to a large multi-property chain — our solution grows with your business.</p></div>
+    <div class="wc reveal"><span class="wc-ic">🔗</span><h4>Seamless Integrations</h4><p>Connect with accounting software, POS, and booking engines for a fully integrated workflow.</p></div>
+    <div class="wc reveal"><span class="wc-ic">🎧</span><h4>Expert Support</h4><p>Our support team is always available to help with questions, setup, and ongoing system management.</p></div></div>
+</section>
+
+<div class="cta-strip reveal">
+  <div>
+    <div class="cta-h">Elevate Your Resort Operations Today</div>
+    <p class="cta-p">Request a free demo and experience how our Resort Management Solution can streamline your operations, enhance guest satisfaction, and drive profitability.</p>
+  </div>
+  <div class="cta-btns">
+    <a href="EITS_Contact_Us.html" class="btn-wh">Request Free Demo →</a>
+    <a href="tel:+6797220501" class="btn-ghost-wh">📞 +679 722 0501</a>
+    <span class="cta-note">No commitment · Free consultation</span>
+  </div>
+</div>
+
+<section id="other-prods">
+  <div class="sec-eyebrow reveal">Explore More Products</div>
+  <h2 class="sec-title reveal" style="margin-bottom:0">Our <span>Other Products</span></h2>
+  <div class="op-grid"><a href="EITS_Product_Retail_POS.html" class="op-card"><span class="op-em">🛒</span>Retail POS</a><a href="EITS_Product_AutoParts_POS.html" class="op-card"><span class="op-em">🔧</span>Auto Parts POS</a><a href="EITS_Product_Inventory.html" class="op-card"><span class="op-em">📦</span>Inventory Mgmt</a><a href="EITS_Product_Xero.html" class="op-card"><span class="op-em">📊</span>Xero Accounting</a><a href="EITS_Product_Payroll.html" class="op-card"><span class="op-em">💰</span>Payroll</a></div>
+</section>
+
+
+<div class="contact-band">
+  <div class="cb-item"><div class="cb-ic">📍</div><div><div class="cb-l">Head Office</div><div class="cb-v">22 Disraeli Road, Suva, Fiji</div></div></div>
+  <div class="cb-div"></div>
+  <div class="cb-item"><div class="cb-ic">📞</div><div><div class="cb-l">Phone</div><div class="cb-v"><a href="tel:+6797220501">+(679) 722 0501</a></div></div></div>
+  <div class="cb-div"></div>
+  <div class="cb-item"><div class="cb-ic">✉️</div><div><div class="cb-l">Email</div><div class="cb-v"><a href="mailto:support@eitsfiji.com">support@eitsfiji.com</a></div></div></div>
+  <div class="cb-div"></div>
+  <div class="cb-item"><div class="cb-ic">🕐</div><div><div class="cb-l">Hours</div><div class="cb-v">Mon–Fri 8am–5pm · 24/7 Managed</div></div></div>
+</div>
+
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-logo">EITS<span>.</span>Fiji</div>
+      <p>Fiji's trusted technology partner — IT services, software products, and Xero advisory. 22 Disraeli Road, Suva, Fiji.</p>
+    </div>
+    <div class="ft-col"><h5>Products</h5><ul>
+      <li><a href="EITS_Product_Retail_POS.html">Retail POS</a></li>
+      <li><a href="EITS_Product_AutoParts_POS.html">Auto Parts POS</a></li>
+      <li><a href="EITS_Product_Inventory.html">Inventory Management</a></li>
+      <li><a href="EITS_Product_Xero.html">Xero Accounting</a></li>
+      <li><a href="EITS_Product_Resort.html">Resort Management</a></li>
+      <li><a href="EITS_Product_Payroll.html">Payroll Solution</a></li>
+    </ul></div>
+    <div class="ft-col"><h5>Services</h5><ul>
+      <li><a href="EITS_Service_Managed_IT.html">Managed IT</a></li>
+      <li><a href="EITS_Service_Software_Dev.html">Software Dev</a></li>
+      <li><a href="EITS_Service_Website_Dev.html">Website Dev</a></li>
+      <li><a href="EITS_Service_ICT_Audit.html">ICT Audit</a></li>
+    </ul></div>
+    <div class="ft-col"><h5>Contact</h5><ul>
+      <li><a href="mailto:support@eitsfiji.com">support@eitsfiji.com</a></li>
+      <li><a href="tel:+6797220501">+(679) 722 0501</a></li>
+      <li><a href="#">22 Disraeli Road, Suva</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2025 Express IT Solutions Pte Limited (EITS Fiji) · All rights reserved</span>
+    <span>support@eitsfiji.com · Suva, Fiji</span>
+  </div>
+</footer>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>40);document.getElementById('scrollTop').classList.toggle('show',window.scrollY>400);});
+function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobMenu').classList.toggle('open');}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>obs.observe(el));
+</script></body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EITS Fiji — Navy Cyan Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2060E0;--navy:#001850;--cyan:#00A0E0;--navy2:#0A2040;
+  --dark:#111827;--muted:#6B7280;--border:#E5E7EB;
+  --bg:#F9FAFB;--white:#fff;
+  --ff:'Inter',sans-serif;--fd:'Raleway',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);color:var(--dark);background:var(--white);overflow-x:hidden}
+
+/* NAV */
+nav{background:var(--navy);padding:0 80px;height:78px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(0,24,80,.4)}
+.logo-text{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;letter-spacing:.02em;text-decoration:none}
+.logo-text span{color:var(--cyan)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;padding:4px 0;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--cyan)}
+.nav-right{display:flex;gap:12px;align-items:center}
+.btn-ghost-nav{padding:9px 18px;border:1.5px solid rgba(255,255,255,.25);color:#fff;border-radius:6px;font-size:12px;font-weight:600;background:transparent;cursor:pointer;font-family:var(--ff);transition:.2s}
+.btn-ghost-nav:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.08)}
+.btn-cyan-nav{padding:10px 22px;background:var(--cyan);border:none;color:#fff;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s}
+.btn-cyan-nav:hover{background:#0090c8;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;top:78px;left:0;right:0;background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.1);padding:24px;z-index:99;flex-direction:column;gap:14px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:15px;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+@media(max-width:768px){nav{padding:0 24px}.nav-links,.nav-right{display:none}.hamburger{display:flex}}
+
+/* HERO */
+.hero{background:var(--navy);padding:100px 80px 0;display:grid;grid-template-columns:52% 48%;gap:60px;align-items:end;overflow:hidden;position:relative}
+.hero::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(32,96,224,.15),transparent 70%);top:-200px;right:-100px;pointer-events:none}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(0,160,224,.15);border:1px solid rgba(0,160,224,.35);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:24px;animation:fadeDown .6s ease}
+.hero h1{font-family:var(--fd);font-size:62px;font-weight:900;color:#fff;line-height:1.06;letter-spacing:-.03em;margin-bottom:22px;animation:fadeUp .7s ease .1s both}
+.accent-cyan{color:var(--cyan)}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.65);line-height:1.75;max-width:460px;margin-bottom:36px;animation:fadeUp .7s ease .2s both}
+.hero-btns{display:flex;gap:14px;margin-bottom:52px;animation:fadeUp .7s ease .3s both;flex-wrap:wrap}
+.btn-cy{padding:14px 28px;background:var(--cyan);border:none;color:#fff;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s}
+.btn-cy:hover{background:#0090c8;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,160,224,.3)}
+.btn-wh-outline{padding:13px 26px;background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--ff);transition:.2s}
+.btn-wh-outline:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)}
+.hero-trust{display:flex;border-top:1px solid rgba(255,255,255,.1);animation:fadeUp .7s ease .4s both}
+.ht{flex:1;padding:24px 24px 28px;border-right:1px solid rgba(255,255,255,.1)}
+.ht:last-child{border-right:none}
+.ht-val{font-family:var(--fd);font-size:36px;font-weight:900;color:#fff;line-height:1}
+.ht-val span{color:var(--cyan)}
+.ht-lbl{font-size:10px;color:rgba(255,255,255,.4);font-weight:600;margin-top:4px;letter-spacing:.05em;text-transform:uppercase}
+
+/* Hero monitor panel */
+.hero-panel{display:flex;align-items:flex-end;justify-content:center;animation:fadeLeft .8s ease .3s both}
+.monitor-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px 20px 0 0;padding:26px;width:340px}
+.mc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.mc-title{font-size:13px;font-weight:700;color:#fff}
+.mc-live{font-size:10px;font-weight:700;padding:3px 10px;background:rgba(74,222,128,.2);color:#4ADE80;border-radius:100px;letter-spacing:.06em;text-transform:uppercase}
+.mc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.mcs{background:rgba(255,255,255,.08);border-radius:10px;padding:13px 10px;text-align:center}
+.mcs-v{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;line-height:1}
+.mcs-v span{color:var(--cyan);font-size:13px}
+.mcs-l{font-size:9px;color:rgba(255,255,255,.4);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-top:3px}
+.mc-bar-label{font-size:10px;color:rgba(255,255,255,.4);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
+.mc-bar{height:4px;background:rgba(255,255,255,.08);border-radius:100px;margin-bottom:14px;overflow:hidden}
+.mc-bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--blue),var(--cyan));animation:barGrow 1.5s ease .8s both}
+@keyframes barGrow{from{width:0}to{width:96%}}
+.mc-notif{display:flex;align-items:center;gap:10px;border-radius:10px;padding:11px 13px;margin-bottom:8px}
+.mn-blue{background:rgba(32,96,224,.15);border:1px solid rgba(32,96,224,.25)}
+.mn-cyan{background:rgba(0,160,224,.12);border:1px solid rgba(0,160,224,.22)}
+.mc-notif-ic{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;flex-shrink:0}
+.mc-notif-t{font-size:12px;font-weight:600;color:#fff}
+.mc-notif-s{font-size:10px;color:rgba(255,255,255,.4)}
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding:60px 24px 0}.hero h1{font-size:42px}.hero-panel{display:none}}
+
+/* SERVICES */
+#services{padding:88px 80px;background:var(--white)}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
+.sec-title{font-family:var(--fd);font-size:44px;font-weight:900;color:var(--dark);line-height:1.1;letter-spacing:-.02em}
+.sec-title span{color:var(--blue)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:52px}
+.sec-link{font-size:13px;font-weight:700;color:var(--blue);text-decoration:none;white-space:nowrap;transition:gap .2s}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.sv{border:1.5px solid var(--border);border-radius:14px;padding:26px 22px;transition:.25s;cursor:pointer;position:relative;overflow:hidden}
+.sv::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--cyan));transform:scaleX(0);transform-origin:left;transition:.35s}
+.sv:hover{border-color:#93C5FD;box-shadow:0 8px 28px rgba(32,96,224,.1);transform:translateY(-3px)}
+.sv:hover::before{transform:scaleX(1)}
+.sv-ic{width:46px;height:46px;background:#EFF6FF;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px;transition:transform .25s}
+.sv:hover .sv-ic{transform:scale(1.12)}
+.sv h3{font-family:var(--fd);font-size:16px;font-weight:800;color:var(--dark);margin-bottom:8px}
+.sv p{font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:12px}
+.sv-link{font-size:12px;font-weight:700;color:var(--blue)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){#services{padding:60px 24px}.svc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.svc-grid{grid-template-columns:1fr}}
+
+/* CTA STRIP */
+.cta-strip{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);padding:72px 80px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.cta-strip h2{font-family:var(--fd);font-size:38px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:12px}
+.cta-strip p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75}
+.cta-btns{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.btn-wh-solid{padding:15px 28px;background:#fff;color:var(--blue);border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);white-space:nowrap;transition:.2s}
+.btn-wh-solid:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.btn-ghost-strip{padding:13px 22px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--ff);white-space:nowrap;transition:.2s}
+.btn-ghost-strip:hover{background:rgba(255,255,255,.2)}
+.cta-note{font-size:11px;color:rgba(255,255,255,.3);text-align:right}
+@media(max-width:768px){.cta-strip{grid-template-columns:1fr;padding:48px 24px}.cta-btns{align-items:flex-start}}
+
+/* ABOUT */
+#about{padding:88px 80px;background:var(--bg);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-visual{background:var(--navy);border-radius:20px;padding:48px;position:relative;overflow:hidden}
+.about-visual::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(0,160,224,.12)}
+.about-visual::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;border-radius:50%;background:rgba(32,96,224,.1)}
+.av-big{font-family:var(--fd);font-size:80px;font-weight:900;color:rgba(255,255,255,.05);line-height:1;margin-bottom:20px;position:relative;z-index:1}
+.av-main{position:relative;z-index:1}
+.av-val{font-family:var(--fd);font-size:52px;font-weight:900;color:#fff;line-height:1}
+.av-val span{color:var(--cyan)}
+.av-lbl{font-size:11px;color:rgba(255,255,255,.4);font-weight:600;margin-top:4px;letter-spacing:.06em;text-transform:uppercase}
+.av-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,.08);position:relative;z-index:1}
+.about-r p{font-size:15px;color:var(--muted);line-height:1.85;margin:16px 0 28px}
+.feat-pills{display:flex;flex-direction:column;gap:12px}
+.fp{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600;color:var(--dark);padding:13px 16px;background:var(--white);border-radius:10px;border:1.5px solid var(--border);transition:.2s}
+.fp:hover{border-color:var(--blue);box-shadow:0 4px 16px rgba(32,96,224,.08)}
+.fp-ic{font-size:18px}
+@media(max-width:900px){#about{grid-template-columns:1fr;padding:60px 24px}.about-visual{padding:32px}}
+
+/* INDUSTRIES */
+#industries{padding:88px 80px;background:var(--white)}
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px}
+.ic{border:1.5px solid var(--border);border-radius:14px;padding:24px 20px;text-align:center;transition:.25s;cursor:pointer}
+.ic:hover{border-color:var(--blue);box-shadow:0 6px 24px rgba(32,96,224,.1);transform:translateY(-2px)}
+.ic.dark{background:var(--navy);border-color:transparent}
+.ic.blue{background:var(--blue);border-color:transparent}
+.ic .ic-em{font-size:28px;margin-bottom:12px;display:block}
+.ic h4{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:6px}
+.ic.dark h4,.ic.blue h4{color:#fff}
+.ic p{font-size:12px;color:var(--muted);line-height:1.6}
+.ic.dark p{color:rgba(255,255,255,.5)}
+.ic.blue p{color:rgba(255,255,255,.7)}
+@media(max-width:900px){#industries{padding:60px 24px}.ind-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.ind-grid{grid-template-columns:1fr}}
+
+/* XERO */
+#xero{padding:88px 80px;background:var(--bg);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+#xero .sec-eyebrow{color:var(--blue)}
+#xero .sec-title span{color:var(--blue)}
+#xero>div:first-child p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:26px}
+.xero-cert-box{background:var(--white);border:1.5px solid #BFDBFE;border-radius:12px;padding:18px 22px;display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.xcb-ic{width:46px;height:46px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;flex-shrink:0}
+.xcb-t{font-size:14px;font-weight:700;color:#1E3A8A}
+.xcb-s{font-size:11px;color:var(--muted);margin-top:2px}
+.btn-blue-solid{padding:13px 26px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s}
+.btn-blue-solid:hover{background:#1a4fc0;transform:translateY(-1px)}
+.xero-steps{display:flex;flex-direction:column;gap:12px}
+.xs{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:20px 22px;display:flex;align-items:flex-start;gap:14px;transition:.2s}
+.xs:hover{border-color:var(--blue);background:#EFF6FF}
+.xs-num{font-family:var(--fd);font-size:26px;font-weight:900;color:#BFDBFE;line-height:1;flex-shrink:0;min-width:36px}
+.xs h4{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.xs p{font-size:12px;color:var(--muted);line-height:1.6}
+@media(max-width:900px){#xero{grid-template-columns:1fr;padding:60px 24px}}
+
+/* PARTNERS */
+.partners{background:var(--navy);padding:52px 80px;display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+.p-label{font-family:var(--fd);font-size:17px;font-weight:800;color:#fff;white-space:nowrap}
+.p-line{width:1px;height:36px;background:rgba(255,255,255,.15);flex-shrink:0}
+.p-row{display:flex;gap:12px;flex-wrap:wrap}
+.pb{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:10px 20px;font-size:13px;font-weight:600;color:rgba(255,255,255,.7);transition:.2s;cursor:pointer}
+.pb:hover{background:rgba(255,255,255,.2);color:#fff}
+@media(max-width:768px){.partners{padding:40px 24px;flex-direction:column;align-items:flex-start}.p-line{display:none}}
+
+/* CONTACT */
+#contact{padding:88px 80px;background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:72px}
+#contact .sec-eyebrow{color:var(--blue)}
+#contact .sec-title span{color:var(--blue)}
+.ct-l>p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:32px}
+.cd-list{display:flex;flex-direction:column}
+.cdi{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.cdi:last-child{border-bottom:none}
+.cdi-ic{width:38px;height:38px;background:#EFF6FF;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.cdi-l{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9CA3AF;margin-bottom:2px}
+.cdi-v{font-size:13px;font-weight:600;color:var(--dark)}
+.ct-form{background:var(--bg);border-radius:16px;padding:36px;border:1.5px solid var(--border)}
+.form-title{font-family:var(--fd);font-size:22px;font-weight:800;color:var(--dark);margin-bottom:24px}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.fg label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9CA3AF}
+.fg input,.fg select,.fg textarea{background:var(--white);border:1.5px solid var(--border);border-radius:8px;padding:11px 14px;font-size:13px;color:var(--dark);outline:none;font-family:var(--ff);width:100%;transition:border-color .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue)}
+.fg textarea{min-height:88px;resize:vertical}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.submit-btn{width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s;margin-top:4px}
+.submit-btn:hover{background:var(--navy);transform:translateY(-1px)}
+.form-success{display:none;background:#ECFDF5;border:1px solid #86EFAC;border-radius:10px;padding:16px 20px;font-size:14px;font-weight:600;color:#166534;margin-top:12px}
+.form-success.show{display:block}
+@media(max-width:900px){#contact{grid-template-columns:1fr;padding:60px 24px}}
+
+footer{background:#0A0E18;padding:56px 80px 28px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ft-logo{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;margin-bottom:14px}
+.ft-logo span{color:var(--cyan)}
+.ft-brand p{font-size:12px;color:rgba(255,255,255,.32);line-height:1.8;max-width:240px}
+.ft-col h5{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.ft-col a:hover{color:rgba(255,255,255,.8)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:8px}
+@media(max-width:900px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){footer{padding:48px 24px 24px}.ft-grid{grid-template-columns:1fr}.ft-bottom{flex-direction:column}}
+
+.scroll-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--cyan);color:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;z-index:999;opacity:0;transform:translateY(16px);transition:.3s;box-shadow:0 4px 16px rgba(0,160,224,.4)}
+.scroll-top.show{opacity:1;transform:translateY(0)}
+.scroll-top:hover{background:#0090c8}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="logo-text">EITS<span>.</span>Fiji</a>
+  <ul class="nav-links">
+    <li><a href="#services" class="nav-link">Services</a></li>
+    <li><a href="EITS_Products.html" class="nav-link">Products</a></li>
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="#industries" class="nav-link">Industries</a></li>
+    <li><a href="#xero" class="nav-link">Xero</a></li>
+    <li><a href="EITS_Contact_Us.html" class="nav-link">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="btn-ghost-nav">📞 +679 330 XXXX</button>
+    <button class="btn-cyan-nav" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Free IT Health Check →</button>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#industries" onclick="toggleMenu()">Industries</a>
+  <a href="#xero" onclick="toggleMenu()">Xero</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div>
+    <div class="hero-pill">Fiji's Trusted IT Partner Since 2010</div>
+    <h1>Managed IT.<br><span class="accent-cyan">Secured.</span><br>Delivered.</h1>
+    <p class="hero-sub">Complete IT infrastructure, cybersecurity, cloud, Xero advisory and CCTV for Fiji businesses — with a 15-minute response guarantee, 24/7.</p>
+    <div class="hero-btns">
+      <button class="btn-cy" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Free IT Health Check →</button>
+      <button class="btn-wh-outline" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore Services</button>
+    </div>
+    <div class="hero-trust">
+      <div class="ht"><div class="ht-val">15<span>+</span></div><div class="ht-lbl">Years in Fiji</div></div>
+      <div class="ht"><div class="ht-val">300<span>+</span></div><div class="ht-lbl">Businesses</div></div>
+      <div class="ht"><div class="ht-val">99<span>%</span></div><div class="ht-lbl">Uptime SLA</div></div>
+      <div class="ht"><div class="ht-val">15<span>min</span></div><div class="ht-lbl">Response</div></div>
+    </div>
+  </div>
+  <div class="hero-panel">
+    <div class="monitor-card">
+      <div class="mc-header"><span class="mc-title">IT Dashboard — Live</span><span class="mc-live">● Online</span></div>
+      <div class="mc-stats">
+        <div class="mcs"><div class="mcs-v">24<span>/7</span></div><div class="mcs-l">Monitoring</div></div>
+        <div class="mcs"><div class="mcs-v">15<span>min</span></div><div class="mcs-l">Response</div></div>
+        <div class="mcs"><div class="mcs-v">99<span>%</span></div><div class="mcs-l">Uptime</div></div>
+      </div>
+      <div class="mc-bar-label">Network Health</div>
+      <div class="mc-bar"><div class="mc-bar-fill" style="width:96%"></div></div>
+      <div class="mc-notif mn-blue">
+        <div class="mc-notif-ic" style="background:var(--blue)">🛡️</div>
+        <div><div class="mc-notif-t">Firewall rules updated</div><div class="mc-notif-s">Auto-patched · 2 min ago</div></div>
+      </div>
+      <div class="mc-notif mn-cyan">
+        <div class="mc-notif-ic" style="background:var(--cyan)">☁️</div>
+        <div><div class="mc-notif-t">Cloud backup completed</div><div class="mc-notif-s">3 servers · 12 mins ago</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="sec-eyebrow reveal">What We Do</div>
+  <div class="sec-head reveal">
+    <h2 class="sec-title">Complete IT Solutions<br>for <span>Fiji Businesses</span></h2>
+    <a href="#contact" class="sec-link">All Services →</a>
+  </div>
+  <div class="svc-grid">
+    <div class="sv reveal"><div class="sv-ic">🖥️</div><h3>Managed IT</h3><p>Proactive monitoring, helpdesk and flat-rate pricing. 15-min SLA guaranteed, 24/7.</p><a href="#contact" class="sv-link">Learn More →</a></div>
+    <div class="sv reveal"><div class="sv-ic">🛡️</div><h3>Cybersecurity</h3><p>Enterprise firewall management, threat detection and security hardening.</p><a href="#contact" class="sv-link">Learn More →</a></div>
+    <div class="sv reveal"><div class="sv-ic">☁️</div><h3>Cloud & M365</h3><p>Azure and M365 migration built for Fiji's connectivity — certified architects on staff.</p><a href="#contact" class="sv-link">Learn More →</a></div>
+    <div class="sv reveal"><div class="sv-ic">📊</div><h3>Xero Advisory</h3><p>Xero Adviser Certified — setup, FRCS payroll, migration and staff training.</p><a href="#xero" class="sv-link">Learn More →</a></div>
+    <div class="sv reveal"><div class="sv-ic">📷</div><h3>CCTV & Surveillance</h3><p>IP camera systems with remote viewing across all your Fiji locations.</p><a href="#contact" class="sv-link">Learn More →</a></div>
+    <div class="sv reveal"><div class="sv-ic">🔌</div><h3>Network & Cabling</h3><p>Enterprise Wi-Fi, LAN/WAN design and structured cabling for Fiji.</p><a href="#contact" class="sv-link">Learn More →</a></div>
+    <div class="sv reveal"><div class="sv-ic">💾</div><h3>Data Backup & DR</h3><p>Automated encrypted backup and tested disaster recovery solutions.</p><a href="#contact" class="sv-link">Learn More →</a></div>
+    <div class="sv reveal"><div class="sv-ic">🌐</div><h3>Web Hosting</h3><p>Reliable Fiji-region hosting, domain management and SSL certificates.</p><a href="#contact" class="sv-link">Learn More →</a></div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip reveal">
+  <div>
+    <h2>Is your IT holding your<br>business back?</h2>
+    <p>Book a free IT Health Check — a comprehensive, no-obligation review of your technology environment. We identify risks and give you a plain-English action plan. Free, no strings attached.</p>
+  </div>
+  <div class="cta-btns">
+    <button class="btn-wh-solid" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Free IT Health Check →</button>
+    <button class="btn-ghost-strip">📞 Call Our Team</button>
+    <span class="cta-note">No commitment · Fiji-wide coverage</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual reveal">
+    <div class="av-big">15+</div>
+    <div class="av-main">
+      <div class="av-val">2010<span>–</span></div>
+      <div class="av-lbl">Serving Fiji businesses</div>
+    </div>
+    <div class="av-grid">
+      <div><div class="av-val">300<span>+</span></div><div class="av-lbl">Clients</div></div>
+      <div><div class="av-val">99<span>%</span></div><div class="av-lbl">Uptime</div></div>
+    </div>
+  </div>
+  <div class="about-r reveal">
+    <div class="sec-eyebrow">About EITS Fiji</div>
+    <h2 class="sec-title">Fiji's Technology <span>Partner</span><br>Since 2010</h2>
+    <p>Express IT Solutions has been Fiji's most trusted technology partner for over 15 years. We deliver world-class IT, cybersecurity, cloud and Xero advisory from our Suva base. We become your strategic IT partner embedded in your business — not just a vendor you call when things break.</p>
+    <div class="feat-pills">
+      <div class="fp"><span class="fp-ic">🛡️</span> Cybersecurity-first on every solution</div>
+      <div class="fp"><span class="fp-ic">☁️</span> Microsoft certified cloud architects</div>
+      <div class="fp"><span class="fp-ic">📊</span> Xero Adviser Certified — one of Fiji's few</div>
+      <div class="fp"><span class="fp-ic">📍</span> Suva · Nadi · Lautoka · Nationwide coverage</div>
+      <div class="fp"><span class="fp-ic">🕐</span> 15-min response SLA, 24/7 for managed clients</div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="sec-eyebrow reveal" style="text-align:center">Industries We Serve</div>
+  <h2 class="sec-title reveal" style="text-align:center;margin-bottom:0">Technology for Every <span>Fiji Business</span></h2>
+  <div class="ind-grid">
+    <div class="ic dark reveal"><span class="ic-em">🏨</span><h4>Hospitality & Tourism</h4><p>Hotel Wi-Fi, PMS, POS, CCTV for Fiji resorts</p></div>
+    <div class="ic reveal"><span class="ic-em">🏥</span><h4>Healthcare</h4><p>Secure clinical networks and systems</p></div>
+    <div class="ic blue reveal"><span class="ic-em">🏦</span><h4>Finance & Accounting</h4><p>Compliance IT, Xero and cybersecurity</p></div>
+    <div class="ic reveal"><span class="ic-em">🏗️</span><h4>Construction</h4><p>Site connectivity and cloud docs</p></div>
+    <div class="ic reveal"><span class="ic-em">🏪</span><h4>Retail & F&B</h4><p>POS, payments, inventory, CCTV</p></div>
+    <div class="ic dark reveal"><span class="ic-em">🎓</span><h4>Education</h4><p>Campus networks and eLearning</p></div>
+    <div class="ic reveal"><span class="ic-em">🚢</span><h4>Logistics & Maritime</h4><p>Fleet tracking and operations IT</p></div>
+    <div class="ic reveal"><span class="ic-em">🏛️</span><h4>Government & NGOs</h4><p>Secure, compliant public sector IT</p></div>
+  </div>
+</section>
+
+<!-- XERO -->
+<section id="xero">
+  <div class="reveal">
+    <div class="sec-eyebrow">Xero Adviser Certified</div>
+    <h2 class="sec-title" style="margin-bottom:16px">Xero Done <span>Right</span> for Fiji.</h2>
+    <p>One of Fiji's select Xero Adviser Certified partners — everything from initial setup through FRCS payroll compliance, integrations and staff training. Switching from MYOB, QuickBooks or spreadsheets made seamless.</p>
+    <div class="xero-cert-box">
+      <div class="xcb-ic">📊</div>
+      <div><div class="xcb-t">Xero Adviser Certified — Fiji</div><div class="xcb-s">Pacific region recognised expertise</div></div>
+    </div>
+    <button class="btn-blue-solid" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Talk to Our Xero Team →</button>
+  </div>
+  <div class="xero-steps reveal">
+    <div class="xs"><div class="xs-num">01</div><div><h4>Initial Consultation</h4><p>We review your current setup and design a migration plan tailored for your Fiji business</p></div></div>
+    <div class="xs"><div class="xs-num">02</div><div><h4>Setup & Data Migration</h4><p>Full Xero setup with Fiji chart of accounts, bank feeds and accurate historical data import</p></div></div>
+    <div class="xs"><div class="xs-num">03</div><div><h4>FRCS Payroll Compliance</h4><p>Payroll configured for full FRCS compliance — keeping your business legally up to date</p></div></div>
+    <div class="xs"><div class="xs-num">04</div><div><h4>Training & Ongoing Support</h4><p>Hands-on staff training and continuing advisory for maximum Xero value</p></div></div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners reveal">
+  <div class="p-label">Outreach Partners</div>
+  <div class="p-line"></div>
+  <div class="p-row">
+    <div class="pb">CIOSA</div><div class="pb">India Cares</div><div class="pb">Caring Friends</div><div class="pb">Karmayog</div><div class="pb">Drishtant</div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="ct-l reveal">
+    <div class="sec-eyebrow">Get In Touch</div>
+    <h2 class="sec-title">Let's Talk About<br>Your <span>IT Needs</span></h2>
+    <p>Whether you need managed IT in Suva, Xero advisory in Nadi, or cybersecurity across Fiji — our team responds within the hour.</p>
+    <div class="cd-list">
+      <div class="cdi"><div class="cdi-ic">📍</div><div><div class="cdi-l">Head Office</div><div class="cdi-v">Suva, Fiji Islands</div></div></div>
+      <div class="cdi"><div class="cdi-ic">📞</div><div><div class="cdi-l">Support Hotline</div><div class="cdi-v">+679 330 XXXX · 24/7 managed clients</div></div></div>
+      <div class="cdi"><div class="cdi-ic">✉️</div><div><div class="cdi-l">Email</div><div class="cdi-v">info@eitsfiji.com</div></div></div>
+      <div class="cdi"><div class="cdi-ic">🕐</div><div><div class="cdi-l">Hours</div><div class="cdi-v">Mon–Fri 8am–5pm · After-hours managed</div></div></div>
+    </div>
+  </div>
+  <div class="ct-form reveal">
+    <div class="form-title">Send an Enquiry</div>
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <div class="fg-row">
+        <div class="fg"><label>First Name *</label><input type="text" placeholder="Your Name" required></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Last Name"></div>
+      </div>
+      <div class="fg"><label>Business Email *</label><input type="email" placeholder="you@company.com.fj" required></div>
+      <div class="fg"><label>Phone</label><input type="tel" placeholder="+679 XXX XXXX"></div>
+      <div class="fg"><label>Service Required</label>
+        <select><option>Free IT Health Check</option><option>Managed IT Services</option><option>Cybersecurity</option><option>Xero Advisory</option><option>CCTV</option><option>Other</option></select>
+      </div>
+      <div class="fg"><label>Message</label><textarea placeholder="Tell us about your business and IT needs..."></textarea></div>
+      <button type="submit" class="submit-btn">Send Enquiry →</button>
+    </form>
+    <div class="form-success" id="formSuccess">✅ Thank you! We'll be in touch within the hour during business hours.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-logo">EITS<span>.</span>Fiji</div>
+      <p>Fiji's trusted managed IT services, cybersecurity, cloud and Xero advisory partner since 2010. Based in Suva, serving all of Fiji.</p>
+    </div>
+    <div class="ft-col"><h5>Services</h5><ul>
+      <li><a href="#services">Managed IT</a></li><li><a href="#services">Cybersecurity</a></li>
+      <li><a href="#services">Cloud & M365</a></li><li><a href="#xero">Xero Advisory</a></li>
+      <li><a href="#services">CCTV</a></li><li><a href="#services">Data Backup</a></li>
+    </ul></div>
+    <div class="ft-col"><h5>Company</h5><ul>
+      <li><a href="#about">About EITS</a></li><li><a href="#industries">Industries</a></li>
+      <li><a href="#contact">Case Studies</a></li><li><a href="#contact">Careers</a></li>
+    </ul></div>
+    <div class="ft-col"><h5>Contact</h5><ul>
+      <li><a href="mailto:info@eitsfiji.com">info@eitsfiji.com</a></li>
+      <li><a href="tel:+679330XXXX">+679 330 XXXX</a></li>
+      <li><a href="#contact">Suva, Fiji</a></li>
+      <li><a href="#contact">Privacy Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2025 Express IT Solutions Pte Limited (EITS Fiji) · All rights reserved</span>
+    <span>info@eitsfiji.com</span>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+  const sections = ['home','services','about','industries','xero','contact'];
+  let current = '';
+  sections.forEach(id => { const el = document.getElementById(id); if(el && window.scrollY >= el.offsetTop - 120) current = id; });
+  document.querySelectorAll('.nav-link').forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + current); });
+});
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('formSuccess').classList.add('show');
+  e.target.style.display = 'none';
+}
+</script>
+</body>
+</html>

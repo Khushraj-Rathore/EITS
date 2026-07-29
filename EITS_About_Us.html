@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — EITS Fiji | Express IT Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2060E0;--navy:#001850;--navy2:#0A2040;--cyan:#00A0E0;
+  --dark:#111827;--ink:#1F2937;--muted:#6B7280;--border:#E5E7EB;
+  --bg:#F9FAFB;--bg2:#EFF6FF;--white:#fff;
+  --ff:'Inter',sans-serif;--fd:'Raleway',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);color:var(--dark);background:var(--white);overflow-x:hidden}
+
+/* ── NAV (identical to B design) ── */
+nav{background:var(--navy);padding:0 80px;height:78px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(0,24,80,.5)}
+.logo-text{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;letter-spacing:.02em;text-decoration:none}
+.logo-text span{color:var(--cyan)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;padding:4px 0;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--cyan)}
+.nav-right{display:flex;gap:12px;align-items:center}
+.btn-ghost-nav{padding:9px 18px;border:1.5px solid rgba(255,255,255,.25);color:#fff;border-radius:6px;font-size:12px;font-weight:600;background:transparent;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center}
+.btn-ghost-nav:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.08)}
+.btn-cyan-nav{padding:10px 22px;background:var(--cyan);border:none;color:#fff;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center}
+.btn-cyan-nav:hover{background:#0090c8;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mob-menu{display:none;position:fixed;top:78px;left:0;right:0;background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.1);padding:24px;z-index:99;flex-direction:column;gap:14px}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:15px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+@media(max-width:768px){nav{padding:0 24px}.nav-links,.nav-right{display:none}.hamburger{display:flex}}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:96px 80px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(32,96,224,.18),transparent 70%);top:-200px;right:-150px;pointer-events:none}
+.hero::after{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(0,160,224,.1),transparent 70%);bottom:-150px;left:80px;pointer-events:none}
+.hero-breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:28px;font-weight:500;position:relative;z-index:1}
+.hero-breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none;transition:.2s}
+.hero-breadcrumb a:hover{color:var(--cyan)}
+.hero-breadcrumb span{color:rgba(255,255,255,.25)}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(0,160,224,.15);border:1px solid rgba(0,160,224,.35);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px;animation:fadeDown .6s ease;position:relative;z-index:1}
+.hero-content{position:relative;z-index:1;max-width:720px}
+.hero h1{font-family:var(--fd);font-size:64px;font-weight:900;color:#fff;line-height:1.06;letter-spacing:-.03em;margin-bottom:22px;animation:fadeUp .7s ease .1s both}
+.hero h1 span{color:var(--cyan)}
+.hero-desc{font-size:17px;color:rgba(255,255,255,.65);line-height:1.8;margin-bottom:40px;animation:fadeUp .7s ease .2s both;max-width:600px}
+.hero-btns{display:flex;gap:14px;animation:fadeUp .7s ease .3s both;flex-wrap:wrap}
+.btn-cy{padding:14px 28px;background:var(--cyan);border:none;color:#fff;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-cy:hover{background:#0090c8;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,160,224,.3)}
+.btn-wh-o{padding:13px 26px;background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-wh-o:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)}
+
+/* Hero stats row */
+.hero-stats{display:flex;border-top:1px solid rgba(255,255,255,.1);margin-top:52px;animation:fadeUp .7s ease .4s both;position:relative;z-index:1}
+.hs{flex:1;padding:24px 28px;border-right:1px solid rgba(255,255,255,.1)}
+.hs:first-child{padding-left:0}
+.hs:last-child{border-right:none}
+.hs-val{font-family:var(--fd);font-size:40px;font-weight:900;color:#fff;line-height:1}
+.hs-val span{color:var(--cyan)}
+.hs-lbl{font-size:11px;color:rgba(255,255,255,.4);font-weight:600;margin-top:5px;letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:768px){.hero{padding:60px 24px 48px}.hero h1{font-size:40px}.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:0}.hs{border-bottom:1px solid rgba(255,255,255,.08)}}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-28px);transition:opacity .65s ease,transform .65s ease}
+.reveal-l.visible{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal-r.visible{opacity:1;transform:none}
+
+/* ── SECTION COMMONS ── */
+section{padding:88px 80px}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
+.sec-title{font-family:var(--fd);font-size:44px;font-weight:900;color:var(--dark);line-height:1.1;letter-spacing:-.02em}
+.sec-title span{color:var(--blue)}
+.sec-title.light{color:#fff}
+.sec-title.light span{color:var(--cyan)}
+@media(max-width:768px){section{padding:60px 24px}.sec-title{font-size:32px}}
+
+/* ── STORY SECTION ── */
+#story{background:var(--white);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.story-l .sec-title{margin-bottom:22px}
+.story-l p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:20px}
+.story-l p:last-of-type{margin-bottom:32px}
+.story-highlights{display:flex;flex-direction:column;gap:14px}
+.sh{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;transition:.2s}
+.sh:hover{border-color:var(--cyan);background:#EFF6FF}
+.sh-ic{width:38px;height:38px;background:rgba(0,160,224,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;color:var(--cyan)}
+.sh h4{font-size:14px;font-weight:700;color:var(--dark);margin-bottom:3px}
+.sh p{font-size:12px;color:var(--muted);line-height:1.6}
+
+/* Story right — visual panel */
+.story-r{display:flex;flex-direction:column;gap:16px}
+.sr-main{background:var(--navy);border-radius:20px;padding:40px;position:relative;overflow:hidden}
+.sr-main::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(0,160,224,.12)}
+.sr-main::after{content:'';position:absolute;bottom:-40px;left:-40px;width:180px;height:180px;border-radius:50%;background:rgba(32,96,224,.1)}
+.sr-founded{font-family:var(--fd);font-size:88px;font-weight:900;color:rgba(255,255,255,.05);line-height:1;position:relative;z-index:1;margin-bottom:8px}
+.sr-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,160,224,.7);margin-bottom:8px;position:relative;z-index:1}
+.sr-tagline{font-family:var(--fd);font-size:30px;font-weight:900;color:#fff;line-height:1.2;position:relative;z-index:1;margin-bottom:24px}
+.sr-tagline span{color:var(--cyan)}
+.sr-divider{height:1px;background:rgba(255,255,255,.1);margin-bottom:24px;position:relative;z-index:1}
+.sr-certs{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1}
+.cert-badge{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 14px;font-size:11px;font-weight:600;color:rgba(255,255,255,.75)}
+.cert-badge-ic{font-size:15px}
+.sr-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.src{background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:18px 16px;text-align:center}
+.src-v{font-family:var(--fd);font-size:36px;font-weight:900;color:var(--blue);line-height:1;margin-bottom:4px}
+.src-v span{color:var(--cyan);font-size:18px}
+.src-l{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+@media(max-width:900px){#story{grid-template-columns:1fr;padding:60px 24px}}
+
+/* ── MISSION & VISION ── */
+#mission{background:var(--navy);padding:88px 80px}
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:52px}
+.mv-card{border-radius:16px;padding:40px 36px;position:relative;overflow:hidden}
+.mv-card.mission-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.mv-card.vision-card{background:rgba(0,160,224,.12);border:1px solid rgba(0,160,224,.25)}
+.mv-icon{font-size:40px;margin-bottom:22px;display:block}
+.mv-card h3{font-family:var(--fd);font-size:28px;font-weight:900;color:#fff;margin-bottom:16px;letter-spacing:-.01em}
+.mv-card p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.85}
+.mv-card ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.mv-card li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:rgba(255,255,255,.65);line-height:1.6}
+.mv-bullet{width:18px;height:18px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;flex-shrink:0;margin-top:2px;font-weight:700}
+@media(max-width:768px){#mission{padding:60px 24px}.mv-grid{grid-template-columns:1fr}}
+
+/* ── FOUNDER SPOTLIGHT ── */
+#founder{background:var(--white);padding:88px 80px;display:grid;grid-template-columns:auto 1fr;gap:72px;align-items:start}
+.founder-visual{width:320px;flex-shrink:0}
+.founder-avatar{width:180px;height:180px;background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:60px;font-weight:900;color:#fff;margin:0 auto 28px;border:4px solid var(--border);position:relative}
+.founder-avatar::after{content:'Founder';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);background:var(--cyan);color:#fff;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 14px;border-radius:100px;white-space:nowrap}
+.founder-name-box{background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.fn-name{font-family:var(--fd);font-size:22px;font-weight:900;color:var(--dark);margin-bottom:4px}
+.fn-title{font-size:13px;font-weight:600;color:var(--cyan)}
+.fn-exp{font-size:12px;color:var(--muted);margin-top:6px}
+.founder-detail .sec-title{margin-bottom:20px}
+.founder-detail p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:18px}
+.founder-detail p:last-of-type{margin-bottom:32px}
+.certs-section h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.certs-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.cert-tag{background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:6px 13px;font-size:11px;font-weight:700;color:var(--navy)}
+.training-row h4{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.training-flags{display:flex;flex-wrap:wrap;gap:10px}
+.flag{display:flex;align-items:center;gap:6px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;color:var(--ink)}
+.flag-em{font-size:16px}
+@media(max-width:900px){#founder{grid-template-columns:1fr;padding:60px 24px}.founder-visual{width:100%}.founder-avatar{width:140px;height:140px;font-size:44px}}
+
+/* ── TEAM ── */
+#team{background:var(--bg);padding:88px 80px}
+.team-intro{max-width:600px;margin:0 auto 56px;text-align:center}
+.team-intro p{font-size:16px;color:var(--muted);line-height:1.75;margin-top:16px}
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tc{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:30px 24px;text-align:center;transition:.3s;position:relative;overflow:hidden}
+.tc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--cyan));transform:scaleX(0);transform-origin:left;transition:.4s}
+.tc:hover{border-color:#93C5FD;box-shadow:0 12px 40px rgba(32,96,224,.1);transform:translateY(-4px)}
+.tc:hover::before{transform:scaleX(1)}
+.tc-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:28px;font-weight:900;color:#fff;border:3px solid var(--border)}
+.tc-name{font-family:var(--fd);font-size:18px;font-weight:800;color:var(--dark);margin-bottom:4px}
+.tc-role{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.tc-divider{height:1px;background:var(--border);margin-bottom:16px}
+.tc-bio{font-size:12px;color:var(--muted);line-height:1.7;text-align:left}
+.tc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;justify-content:center}
+.tc-tag{font-size:9px;font-weight:700;padding:3px 9px;background:#EFF6FF;color:var(--blue);border-radius:100px;letter-spacing:.04em}
+@media(max-width:1100px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.team-grid{grid-template-columns:1fr}}
+@media(max-width:768px){#team{padding:60px 24px}}
+
+/* ── VALUES ── */
+#values{background:var(--white);padding:88px 80px}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.vc{border:1.5px solid var(--border);border-radius:14px;padding:32px 26px;transition:.25s;position:relative}
+.vc:hover{border-color:var(--cyan);box-shadow:0 8px 28px rgba(0,160,224,.1)}
+.vc-num{font-family:var(--fd);font-size:52px;font-weight:900;color:var(--border);line-height:1;margin-bottom:16px;transition:.25s}
+.vc:hover .vc-num{color:#BFDBFE}
+.vc-ic{font-size:28px;margin-bottom:14px;display:block}
+.vc h3{font-family:var(--fd);font-size:20px;font-weight:800;color:var(--dark);margin-bottom:10px}
+.vc p{font-size:13px;color:var(--muted);line-height:1.75}
+@media(max-width:900px){.values-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.values-grid{grid-template-columns:1fr}}
+@media(max-width:768px){#values{padding:60px 24px}}
+
+/* ── TIMELINE / JOURNEY ── */
+#journey{background:var(--navy);padding:88px 80px}
+.timeline{display:flex;flex-direction:column;gap:0;margin-top:52px;position:relative}
+.timeline::before{content:'';position:absolute;left:32px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.1)}
+.tl-item{display:grid;grid-template-columns:80px 1fr;gap:32px;align-items:start;padding-bottom:40px;position:relative}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot-wrap{display:flex;flex-direction:column;align-items:center;position:relative;z-index:1}
+.tl-dot{width:34px;height:34px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;flex-shrink:0;margin-left:16px}
+.tl-item.navy .tl-dot{background:var(--blue)}
+.tl-year{font-family:var(--fd);font-size:13px;font-weight:900;color:rgba(255,255,255,.35);margin-top:6px;letter-spacing:.04em;text-align:center}
+.tl-content{padding-top:4px}
+.tl-content h4{font-family:var(--fd);font-size:20px;font-weight:800;color:#fff;margin-bottom:8px}
+.tl-content p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.75}
+.tl-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,160,224,.15);border:1px solid rgba(0,160,224,.3);border-radius:100px;padding:4px 12px;font-size:10px;font-weight:700;color:var(--cyan);letter-spacing:.06em;text-transform:uppercase;margin-top:10px}
+@media(max-width:768px){#journey{padding:60px 24px}.timeline::before{left:24px}.tl-item{grid-template-columns:60px 1fr;gap:16px}.tl-dot{margin-left:8px}}
+
+/* ── GLOBAL REACH ── */
+#expertise{background:var(--bg);padding:88px 80px}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:52px}
+.exp-left p{font-size:15px;color:var(--muted);line-height:1.85;margin-bottom:28px}
+.training-countries{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+.country{display:flex;align-items:center;gap:8px;background:var(--white);border:1.5px solid var(--border);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:600;color:var(--ink);transition:.2s}
+.country:hover{border-color:var(--blue);color:var(--blue)}
+.country-em{font-size:18px}
+.exp-right{display:flex;flex-direction:column;gap:14px}
+.exp-org{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:22px 24px;display:flex;align-items:flex-start;gap:16px;transition:.2s}
+.exp-org:hover{border-color:var(--blue);box-shadow:0 4px 20px rgba(32,96,224,.08)}
+.exp-org-ic{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.exp-org h4{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:4px}
+.exp-org p{font-size:12px;color:var(--muted);line-height:1.65}
+.exp-org-badge{font-size:10px;font-weight:700;padding:2px 10px;border-radius:100px;margin-top:6px;display:inline-block;letter-spacing:.06em;text-transform:uppercase}
+@media(max-width:900px){.exp-grid{grid-template-columns:1fr}}
+@media(max-width:768px){#expertise{padding:60px 24px}}
+
+/* ── CTA STRIP ── */
+.cta-strip{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);padding:72px 80px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.cs-h{font-family:var(--fd);font-size:38px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:12px}
+.cs-p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75}
+.cs-btns{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.btn-wh{padding:15px 28px;background:#fff;color:var(--blue);border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);white-space:nowrap;transition:.2s;text-decoration:none;display:inline-flex}
+.btn-wh:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.btn-ghost-wh{padding:13px 22px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--ff);white-space:nowrap;transition:.2s;text-decoration:none;display:inline-flex}
+.btn-ghost-wh:hover{background:rgba(255,255,255,.2)}
+.cs-note{font-size:11px;color:rgba(255,255,255,.3);text-align:right}
+@media(max-width:768px){.cta-strip{grid-template-columns:1fr;padding:48px 24px}.cs-btns{align-items:flex-start}}
+
+/* ── CONTACT BAND ── */
+.contact-band{background:var(--dark);padding:40px 80px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.cb-item{display:flex;align-items:center;gap:14px}
+.cb-ic{width:44px;height:44px;background:rgba(0,160,224,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cb-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:3px}
+.cb-v{font-size:14px;font-weight:600;color:#fff}
+.cb-v a{color:#fff;text-decoration:none;transition:.2s}
+.cb-v a:hover{color:var(--cyan)}
+.cb-div{width:1px;height:40px;background:rgba(255,255,255,.1)}
+@media(max-width:768px){.contact-band{padding:32px 24px;flex-direction:column;align-items:flex-start}.cb-div{display:none}}
+
+/* ── FOOTER ── */
+footer{background:#0A0E18;padding:56px 80px 28px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ft-logo{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;margin-bottom:14px}
+.ft-logo span{color:var(--cyan)}
+.ft-brand p{font-size:12px;color:rgba(255,255,255,.32);line-height:1.8;max-width:240px}
+.ft-col h5{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;transition:.2s}
+.ft-col a:hover{color:rgba(255,255,255,.8)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:8px}
+@media(max-width:900px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){footer{padding:48px 24px 24px}.ft-grid{grid-template-columns:1fr}.ft-bottom{flex-direction:column}}
+
+.scroll-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--cyan);color:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;z-index:999;opacity:0;transform:translateY(16px);transition:.3s;box-shadow:0 4px 16px rgba(0,160,224,.4)}
+.scroll-top.show{opacity:1;transform:translateY(0)}
+.scroll-top:hover{background:#0090c8}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="logo-text">EITS<span>.</span>Fiji</a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="#" class="active">About</a></li>
+    <li><a href="index.html#industries">Industries</a></li>
+    <li><a href="index.html#xero">Xero</a></li>
+    <li><a href="EITS_Contact_Us.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+6797220501" class="btn-ghost-nav">📞 +679 722 0501</a>
+    <a href="EITS_Contact_Us.html" class="btn-cyan-nav">Free IT Health Check →</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html#services" onclick="toggleMenu()">Services</a>
+  <a href="#" onclick="toggleMenu()">About</a>
+  <a href="index.html#industries" onclick="toggleMenu()">Industries</a>
+  <a href="index.html#xero" onclick="toggleMenu()">Xero</a>
+  <a href="EITS_Contact_Us.html" onclick="toggleMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-breadcrumb">
+    <a href="index.html">Home</a>
+    <span>›</span>
+    <span style="color:rgba(255,255,255,.65)">About Us</span>
+  </div>
+  <div class="hero-pill">Est. 2020 · Suva, Fiji</div>
+  <div class="hero-content">
+    <h1>Enhance Your<br>Technical <span>Efficiency</span></h1>
+    <p class="hero-desc">Welcome to Express IT Solutions — a leading provider committed to delivering innovative, reliable, and cutting-edge technology services. With a team of experts dedicated to transforming your digital landscape, we specialize in managed IT, cybersecurity, cloud services, Xero advisory and more.</p>
+    <div class="hero-btns">
+      <a href="#team" class="btn-cy">Meet Our Team →</a>
+      <a href="EITS_Contact_Us.html" class="btn-wh-o">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-val">15<span>+</span></div><div class="hs-lbl">Years ICT Experience</div></div>
+    <div class="hs"><div class="hs-val">300<span>+</span></div><div class="hs-lbl">Businesses Served</div></div>
+    <div class="hs"><div class="hs-val">99<span>%</span></div><div class="hs-lbl">Uptime SLA</div></div>
+    <div class="hs"><div class="hs-val">4</div><div class="hs-lbl">Expert Team Members</div></div>
+  </div>
+</div>
+
+<!-- STORY -->
+<section id="story">
+  <div class="reveal-l">
+    <div class="sec-eyebrow">Our Story</div>
+    <h2 class="sec-title" style="margin-bottom:22px">Innovative Solutions<br>for <span>Every Business</span></h2>
+    <p>Express IT Solutions focuses on understanding your unique business needs to create tailored solutions that drive efficiency, growth, and success. Whether you're a startup or an enterprise, we empower you with the tools and strategies to stay ahead in a constantly evolving digital world.</p>
+    <p>Founded in Suva, Fiji, our team brings together decades of combined ICT experience from across the globe — delivering world-class technology services right here in the Pacific. We don't just solve IT problems; we become your long-term strategic technology partner.</p>
+    <div class="story-highlights">
+      <div class="sh"><div class="sh-ic">🌏</div><div><h4>Pacific-Rooted, World-Class</h4><p>Deep local knowledge of Fiji's business environment combined with internationally certified expertise</p></div></div>
+      <div class="sh"><div class="sh-ic">🔒</div><div><h4>Security-First by Design</h4><p>Every solution we deliver is built with cybersecurity at its core — protecting your data and reputation</p></div></div>
+      <div class="sh"><div class="sh-ic">📊</div><div><h4>Xero Adviser Certified</h4><p>One of Fiji's select certified Xero partners — from setup through FRCS payroll compliance</p></div></div>
+    </div>
+  </div>
+  <div class="reveal-r">
+    <div class="sr-main">
+      <div class="sr-founded">2020</div>
+      <div class="sr-label">Founded in Suva, Fiji</div>
+      <div class="sr-tagline">Powering Fiji's<br><span>Digital Future</span></div>
+      <div class="sr-divider"></div>
+      <div class="sr-certs">
+        <div class="cert-badge"><span class="cert-badge-ic">🏆</span> Xero Adviser Certified Partner</div>
+        <div class="cert-badge"><span class="cert-badge-ic">☁️</span> Microsoft Certified Cloud Architects</div>
+        <div class="cert-badge"><span class="cert-badge-ic">🛡️</span> CompTIA Security+ Certified</div>
+        <div class="cert-badge"><span class="cert-badge-ic">🌐</span> CompTIA Network+ & A+ Certified</div>
+      </div>
+    </div>
+    <div class="sr-cards">
+      <div class="src"><div class="src-v">20<span>+</span></div><div class="src-l">Years Founder ICT Exp.</div></div>
+      <div class="src"><div class="src-v">8<span>+</span></div><div class="src-l">Certifications Held</div></div>
+      <div class="src"><div class="src-v">5</div><div class="src-l">Global Orgs Worked With</div></div>
+      <div class="src"><div class="src-v">15<span>min</span></div><div class="src-l">Response Guarantee</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION & VISION -->
+<section id="mission">
+  <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto">
+    <div class="sec-eyebrow">Purpose & Direction</div>
+    <h2 class="sec-title light">Our <span>Mission</span> &amp; Vision</h2>
+  </div>
+  <div class="mv-grid">
+    <div class="mv-card mission-card reveal-l">
+      <span class="mv-icon">🎯</span>
+      <h3>Our Mission</h3>
+      <p>To deliver innovative, reliable, and cutting-edge technology services that empower businesses across Fiji and the Pacific — transforming digital landscapes and enabling our clients to achieve more with technology.</p>
+      <ul>
+        <li><div class="mv-bullet">✓</div>Tailored solutions for startups to enterprises</li>
+        <li><div class="mv-bullet">✓</div>Proactive, not reactive IT support</li>
+        <li><div class="mv-bullet">✓</div>Building long-term strategic partnerships</li>
+        <li><div class="mv-bullet">✓</div>Keeping Fiji businesses secure and connected</li>
+      </ul>
+    </div>
+    <div class="mv-card vision-card reveal-r">
+      <span class="mv-icon">🔭</span>
+      <h3>Our Vision</h3>
+      <p>To be Fiji's most trusted and innovative technology partner — setting the benchmark for IT excellence in the Pacific, and helping every business we serve stay ahead in a constantly evolving digital world.</p>
+      <ul>
+        <li><div class="mv-bullet">✓</div>Leading managed IT services provider in Fiji</li>
+        <li><div class="mv-bullet">✓</div>Expanding Pacific-wide technology coverage</li>
+        <li><div class="mv-bullet">✓</div>Continuous investment in our team and tools</li>
+        <li><div class="mv-bullet">✓</div>Making enterprise IT accessible to all businesses</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER SPOTLIGHT -->
+<section id="founder">
+  <div class="founder-visual reveal-l">
+    <div class="founder-avatar">AK</div>
+    <div class="founder-name-box">
+      <div class="fn-name">Atin Kumar</div>
+      <div class="fn-title">Founder & IT Engineer</div>
+      <div class="fn-exp">20+ Years ICT Experience</div>
+    </div>
+  </div>
+  <div class="founder-detail reveal-r">
+    <div class="sec-eyebrow">Management & Ownership</div>
+    <h2 class="sec-title" style="margin-bottom:20px">Founded by a <span>Global ICT Expert</span></h2>
+    <p>In 2020, Mr. Atin Kumar founded Express Information Technology Solutions Pte Limited, bringing over 20 years of deep ICT expertise to Fiji's business community. His career spans some of the world's most prestigious international organisations — giving EITS Fiji a level of expertise rarely found in the Pacific.</p>
+    <p>Mr. Kumar has worked directly with the <strong>European Union</strong>, the <strong>Pacific Islands Forum Secretariat</strong>, and the <strong>World Wide Fund for Nature (WWF)</strong> — gaining hands-on experience across diverse, complex technology environments. He received specialised training in South Africa, London, Switzerland, Malaysia, and Brussels.</p>
+
+    <div class="certs-section">
+      <h4>Microsoft &amp; CompTIA Certifications (Earned 2005)</h4>
+      <div class="certs-grid">
+        <div class="cert-tag">MCP</div>
+        <div class="cert-tag">MCDST</div>
+        <div class="cert-tag">MCSA</div>
+        <div class="cert-tag">MCSE</div>
+        <div class="cert-tag">MCT</div>
+        <div class="cert-tag">CompTIA A+</div>
+        <div class="cert-tag">CompTIA N+</div>
+        <div class="cert-tag">CompTIA Security+</div>
+      </div>
+    </div>
+
+    <div class="training-row">
+      <h4>International Training Locations</h4>
+      <div class="training-flags">
+        <div class="flag"><span class="flag-em">🇿🇦</span>South Africa</div>
+        <div class="flag"><span class="flag-em">🇬🇧</span>London, UK</div>
+        <div class="flag"><span class="flag-em">🇨🇭</span>Switzerland</div>
+        <div class="flag"><span class="flag-em">🇲🇾</span>Malaysia</div>
+        <div class="flag"><span class="flag-em">🇧🇪</span>Brussels</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="team-intro reveal">
+    <div class="sec-eyebrow" style="text-align:center">Meet Our Experts</div>
+    <h2 class="sec-title" style="text-align:center">Expert Teams Ensuring<br>Your <span>Success</span></h2>
+    <p>Our certified professionals bring together decades of combined experience across managed IT, enterprise cloud architecture, financial technology, and scalable business solutions.</p>
+  </div>
+  <div class="team-grid">
+
+    <div class="tc reveal">
+      <div class="tc-avatar" style="background:linear-gradient(135deg,#001850,#2060E0)">AK</div>
+      <div class="tc-name">Atin Kumar</div>
+      <div class="tc-role">Founder & IT Engineer</div>
+      <div class="tc-divider"></div>
+      <div class="tc-bio">The driving force behind EITS Fiji. Atin leads with 20+ years of ICT expertise, participating directly in technical solution development, marketing, and customer experience strategy. His hands-on approach ensures every client receives expert-level attention.</div>
+      <div class="tc-tags">
+        <span class="tc-tag">MCSE</span>
+        <span class="tc-tag">CompTIA Security+</span>
+        <span class="tc-tag">20+ Yrs Exp</span>
+      </div>
+    </div>
+
+    <div class="tc reveal">
+      <div class="tc-avatar" style="background:linear-gradient(135deg,#0040A0,#00A0E0)">CT</div>
+      <div class="tc-name">Christine Taylor</div>
+      <div class="tc-role">Managing Director</div>
+      <div class="tc-divider"></div>
+      <div class="tc-bio">Christine brings visionary leadership and strategic insight to EITS Fiji, driving innovation and operational excellence across all services. With a deep understanding of the Fiji market and over a decade of industry experience, she ensures the highest standards of client success and satisfaction.</div>
+      <div class="tc-tags">
+        <span class="tc-tag">Leadership</span>
+        <span class="tc-tag">Fiji Market Expert</span>
+        <span class="tc-tag">10+ Yrs Exp</span>
+      </div>
+    </div>
+
+    <div class="tc reveal">
+      <div class="tc-avatar" style="background:linear-gradient(135deg,#00A0E0,#0040A0)">AN</div>
+      <div class="tc-name">Anurag Nayyar</div>
+      <div class="tc-role">Chief Technical Officer</div>
+      <div class="tc-divider"></div>
+      <div class="tc-bio">With deep expertise in enterprise technology and product architecture, Anurag leads EITS's innovation strategy and ensures delivery of robust, scalable solutions across all platforms. He is the technical backbone ensuring every client deployment meets the highest standard.</div>
+      <div class="tc-tags">
+        <span class="tc-tag">Enterprise Architecture</span>
+        <span class="tc-tag">Product Strategy</span>
+      </div>
+    </div>
+
+    <div class="tc reveal">
+      <div class="tc-avatar" style="background:linear-gradient(135deg,#2060E0,#001850)">BP</div>
+      <div class="tc-name">Birendra Patro</div>
+      <div class="tc-role">Senior Technical Consultant</div>
+      <div class="tc-divider"></div>
+      <div class="tc-bio">Birendra leads the design and delivery of scalable business solutions. He mentors over 100 in-house developers and ensures every implementation is aligned with client goals and industry best practices — translating complex business requirements into elegant technical outcomes.</div>
+      <div class="tc-tags">
+        <span class="tc-tag">100+ Devs Mentored</span>
+        <span class="tc-tag">Solution Design</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CORE VALUES -->
+<section id="values">
+  <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto">
+    <div class="sec-eyebrow">What We Stand For</div>
+    <h2 class="sec-title">Our Core <span>Values</span></h2>
+  </div>
+  <div class="values-grid">
+    <div class="vc reveal">
+      <div class="vc-num">01</div>
+      <span class="vc-ic">🛡️</span>
+      <h3>Security First</h3>
+      <p>Every solution we design is hardened from the ground up. Cybersecurity is never an afterthought at EITS — it's the foundation. We protect your data, your clients, and your reputation.</p>
+    </div>
+    <div class="vc reveal">
+      <div class="vc-num">02</div>
+      <span class="vc-ic">⚡</span>
+      <h3>Speed & Reliability</h3>
+      <p>Our 15-minute response guarantee is real, not a slogan. We back every managed IT engagement with SLA-driven uptime commitments so your business never skips a beat.</p>
+    </div>
+    <div class="vc reveal">
+      <div class="vc-num">03</div>
+      <span class="vc-ic">🤝</span>
+      <h3>Partnership Mindset</h3>
+      <p>We embed ourselves in your business as a strategic technology partner — not just a vendor you call when things break. Your success is our benchmark, not your invoice.</p>
+    </div>
+    <div class="vc reveal">
+      <div class="vc-num">04</div>
+      <span class="vc-ic">🎓</span>
+      <h3>Certified Expertise</h3>
+      <p>Our team holds internationally recognised certifications from Microsoft, CompTIA, and Xero. We invest continuously in training so our clients always get best-practice solutions.</p>
+    </div>
+    <div class="vc reveal">
+      <div class="vc-num">05</div>
+      <span class="vc-ic">🌏</span>
+      <h3>Local Understanding</h3>
+      <p>We understand Fiji's connectivity realities, business regulations, FRCS compliance, and the unique challenges of operating in the Pacific. That local knowledge makes every solution better.</p>
+    </div>
+    <div class="vc reveal">
+      <div class="vc-num">06</div>
+      <span class="vc-ic">🚀</span>
+      <h3>Innovation Driven</h3>
+      <p>Technology never stands still, and neither do we. We continuously explore new solutions, platforms, and approaches to ensure our clients benefit from the latest innovations in IT.</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY TIMELINE -->
+<section id="journey">
+  <div class="reveal" style="max-width:640px">
+    <div class="sec-eyebrow">Our Journey</div>
+    <h2 class="sec-title light">Building Fiji's <span>IT Future</span><br>Milestone by Milestone</h2>
+  </div>
+  <div class="timeline">
+    <div class="tl-item reveal">
+      <div class="tl-dot-wrap">
+        <div class="tl-dot">🎯</div>
+        <div class="tl-year">2005</div>
+      </div>
+      <div class="tl-content">
+        <h4>Microsoft & CompTIA Certifications</h4>
+        <p>Founder Atin Kumar earns his full suite of Microsoft (MCP, MCDST, MCSA, MCSE, MCT) and CompTIA (A+, Network+, Security+) certifications — establishing the technical foundation that drives EITS today.</p>
+        <div class="tl-badge">🏆 8 International Certifications</div>
+      </div>
+    </div>
+    <div class="tl-item navy reveal">
+      <div class="tl-dot-wrap">
+        <div class="tl-dot">🌐</div>
+        <div class="tl-year">2005–2019</div>
+      </div>
+      <div class="tl-content">
+        <h4>Global ICT Experience</h4>
+        <p>Atin Kumar works with the European Union, Pacific Islands Forum Secretariat, and WWF — gaining 20+ years of enterprise IT expertise and receiving international training across South Africa, London, Switzerland, Malaysia, and Brussels.</p>
+        <div class="tl-badge">🌍 5 Countries · 3 Global Organisations</div>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot-wrap">
+        <div class="tl-dot">🚀</div>
+        <div class="tl-year">2020</div>
+      </div>
+      <div class="tl-content">
+        <h4>EITS Fiji Founded</h4>
+        <p>Express Information Technology Solutions Pte Limited is officially established in Suva, Fiji — bringing world-class managed IT, cybersecurity, cloud, and Xero advisory services to the Pacific business community.</p>
+        <div class="tl-badge">📍 Suva, Fiji · Company Established</div>
+      </div>
+    </div>
+    <div class="tl-item navy reveal">
+      <div class="tl-dot-wrap">
+        <div class="tl-dot">📊</div>
+        <div class="tl-year">2021</div>
+      </div>
+      <div class="tl-content">
+        <h4>Xero Adviser Certification</h4>
+        <p>EITS Fiji earns Xero Adviser Certified status, becoming one of Fiji's select certified Xero partners. Expanded services to include FRCS payroll compliance, data migration, and full staff training programmes.</p>
+        <div class="tl-badge">✓ Xero Adviser Certified</div>
+      </div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot-wrap">
+        <div class="tl-dot">⭐</div>
+        <div class="tl-year">Today</div>
+      </div>
+      <div class="tl-content">
+        <h4>300+ Businesses. 99% Uptime. Growing.</h4>
+        <p>EITS Fiji now serves 300+ businesses across Fiji with a dedicated expert team, 15-minute response SLA, and coverage from Suva to Nadi, Lautoka and beyond. The journey continues.</p>
+        <div class="tl-badge">🇫🇯 Fiji's Trusted IT Partner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL EXPERTISE -->
+<section id="expertise">
+  <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto 0">
+    <div class="sec-eyebrow">Global Experience, Local Delivery</div>
+    <h2 class="sec-title">International Background.<br><span>Fiji-Focused</span> Solutions.</h2>
+  </div>
+  <div class="exp-grid">
+    <div class="reveal-l">
+      <p>Our founder's two decades of international ICT experience — working with some of the world's leading organisations — means every EITS client benefits from enterprise-grade thinking and globally proven methodologies, delivered with deep local knowledge of Fiji.</p>
+      <div class="training-countries">
+        <div class="country"><span class="country-em">🇿🇦</span>South Africa</div>
+        <div class="country"><span class="country-em">🇬🇧</span>London</div>
+        <div class="country"><span class="country-em">🇨🇭</span>Switzerland</div>
+        <div class="country"><span class="country-em">🇲🇾</span>Malaysia</div>
+        <div class="country"><span class="country-em">🇧🇪</span>Brussels</div>
+      </div>
+      <a href="EITS_Contact_Us.html" class="btn-cy" style="display:inline-flex">Talk to Our Team →</a>
+    </div>
+    <div class="reveal-r">
+      <div class="exp-org">
+        <div class="exp-org-ic" style="background:#EFF6FF">🇪🇺</div>
+        <div>
+          <h4>European Union</h4>
+          <p>ICT advisory and technical services for EU-funded programmes across the Pacific and beyond</p>
+          <div class="exp-org-badge" style="background:#EFF6FF;color:#1E3A8A">International Organisation</div>
+        </div>
+      </div>
+      <div class="exp-org">
+        <div class="exp-org-ic" style="background:#F0FDF4">🌏</div>
+        <div>
+          <h4>Pacific Islands Forum Secretariat</h4>
+          <p>Enterprise IT support for one of the Pacific's most important intergovernmental organisations</p>
+          <div class="exp-org-badge" style="background:#F0FDF4;color:#166534">Pacific Organisation</div>
+        </div>
+      </div>
+      <div class="exp-org">
+        <div class="exp-org-ic" style="background:#F0FDF4">🌿</div>
+        <div>
+          <h4>World Wide Fund for Nature (WWF)</h4>
+          <p>ICT systems management and support for one of the world's largest conservation organisations</p>
+          <div class="exp-org-badge" style="background:#F0FDF4;color:#166534">Global NGO</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip reveal">
+  <div>
+    <div class="cs-h">Ready to Elevate<br>Your Business IT?</div>
+    <p class="cs-p">Book a free IT Health Check — a comprehensive, no-obligation review of your technology environment. We'll identify risks and hand you a plain-English action plan. Zero cost, zero strings.</p>
+  </div>
+  <div class="cs-btns">
+    <a href="EITS_Contact_Us.html" class="btn-wh">Book Free IT Health Check →</a>
+    <a href="tel:+6797220501" class="btn-ghost-wh">📞 +679 722 0501</a>
+    <span class="cs-note">No commitment · Fiji-wide coverage</span>
+  </div>
+</div>
+
+<!-- CONTACT BAND -->
+<div class="contact-band">
+  <div class="cb-item">
+    <div class="cb-ic">📍</div>
+    <div>
+      <div class="cb-l">Head Office</div>
+      <div class="cb-v">22 Disraeli Road, Suva, Fiji</div>
+    </div>
+  </div>
+  <div class="cb-div"></div>
+  <div class="cb-item">
+    <div class="cb-ic">📞</div>
+    <div>
+      <div class="cb-l">Phone</div>
+      <div class="cb-v"><a href="tel:+6797220501">+(679) 722 0501</a></div>
+    </div>
+  </div>
+  <div class="cb-div"></div>
+  <div class="cb-item">
+    <div class="cb-ic">✉️</div>
+    <div>
+      <div class="cb-l">Email</div>
+      <div class="cb-v"><a href="mailto:support@eitsfiji.com">support@eitsfiji.com</a></div>
+    </div>
+  </div>
+  <div class="cb-div"></div>
+  <div class="cb-item">
+    <div class="cb-ic">🕐</div>
+    <div>
+      <div class="cb-l">Office Hours</div>
+      <div class="cb-v">Mon–Fri 8am–5pm · 24/7 Managed</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-logo">EITS<span>.</span>Fiji</div>
+      <p>Fiji's trusted managed IT services, cybersecurity, cloud and Xero advisory partner. Based in Suva at 22 Disraeli Road, serving all of Fiji and the Pacific.</p>
+    </div>
+    <div class="ft-col"><h5>Services</h5><ul>
+      <li><a href="index.html#services">Managed IT</a></li>
+      <li><a href="index.html#services">Cybersecurity</a></li>
+      <li><a href="index.html#services">Cloud & M365</a></li>
+      <li><a href="index.html#xero">Xero Advisory</a></li>
+      <li><a href="index.html#services">CCTV & Surveillance</a></li>
+      <li><a href="index.html#services">Data Backup</a></li>
+    </ul></div>
+    <div class="ft-col"><h5>Company</h5><ul>
+      <li><a href="#">About EITS</a></li>
+      <li><a href="#team">Our Team</a></li>
+      <li><a href="#journey">Our Journey</a></li>
+      <li><a href="index.html#industries">Industries</a></li>
+      <li><a href="EITS_Contact_Us.html">Careers</a></li>
+    </ul></div>
+    <div class="ft-col"><h5>Contact</h5><ul>
+      <li><a href="mailto:support@eitsfiji.com">support@eitsfiji.com</a></li>
+      <li><a href="tel:+6797220501">+(679) 722 0501</a></li>
+      <li><a href="#">22 Disraeli Road, Suva</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2025 Express IT Solutions Pte Limited (EITS Fiji) · All rights reserved</span>
+    <span>support@eitsfiji.com · Suva, Fiji</span>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Sticky nav
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+});
+
+// Hamburger
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+
+// Scroll reveal — all 3 animation classes
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

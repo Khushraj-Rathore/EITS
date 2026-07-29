@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Contact Us — EITS Fiji | Express IT Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2060E0;--navy:#001850;--navy2:#0A2040;--cyan:#00A0E0;
+  --dark:#111827;--ink:#1F2937;--muted:#6B7280;--border:#E5E7EB;
+  --bg:#F9FAFB;--bg2:#EFF6FF;--white:#fff;
+  --ff:'Inter',sans-serif;--fd:'Raleway',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);color:var(--dark);background:var(--white);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{background:var(--navy);padding:0 80px;height:78px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(0,24,80,.5)}
+.logo-text{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;text-decoration:none}
+.logo-text span{color:var(--cyan)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;transition:.2s;padding:4px 0;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--cyan)}
+.nav-right{display:flex;gap:12px;align-items:center}
+.btn-ghost-nav{padding:9px 18px;border:1.5px solid rgba(255,255,255,.25);color:#fff;border-radius:6px;font-size:12px;font-weight:600;background:transparent;text-decoration:none;display:inline-flex;transition:.2s}
+.btn-ghost-nav:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.08)}
+.btn-cyan-nav{padding:10px 22px;background:var(--cyan);border:none;color:#fff;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;display:inline-flex;transition:.2s}
+.btn-cyan-nav:hover{background:#0090c8;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mob-menu{display:none;position:fixed;top:78px;left:0;right:0;background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.1);padding:24px;z-index:99;flex-direction:column;gap:14px}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:15px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+@media(max-width:768px){nav{padding:0 24px}.nav-links,.nav-right{display:none}.hamburger{display:flex}}
+
+/* ── HERO ── */
+.hero{background:var(--navy);padding:88px 80px 0;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(32,96,224,.2),transparent 70%);top:-200px;right:-100px;pointer-events:none}
+.hero::after{content:'';position:absolute;width:350px;height:350px;background:radial-gradient(circle,rgba(0,160,224,.12),transparent 70%);bottom:-100px;left:60px;pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:680px}
+.hero-bc{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:24px;font-weight:500}
+.hero-bc a{color:rgba(255,255,255,.4);text-decoration:none;transition:.2s}.hero-bc a:hover{color:var(--cyan)}
+.hero-bc span{color:rgba(255,255,255,.2)}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(0,160,224,.15);border:1px solid rgba(0,160,224,.35);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px;animation:fadeDown .6s ease}
+.hero h1{font-family:var(--fd);font-size:60px;font-weight:900;color:#fff;line-height:1.06;letter-spacing:-.03em;margin-bottom:18px;animation:fadeUp .7s ease .1s both}
+.hero h1 span{color:var(--cyan)}
+.hero-desc{font-size:16px;color:rgba(255,255,255,.65);line-height:1.8;max-width:540px;margin-bottom:0;animation:fadeUp .7s ease .2s both}
+
+/* Hero contact strip */
+.hero-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:52px;border-top:1px solid rgba(255,255,255,.1);position:relative;z-index:1;animation:fadeUp .7s ease .3s both}
+.hs-item{padding:24px 28px;border-right:1px solid rgba(255,255,255,.1)}
+.hs-item:last-child{border-right:none}
+.hs-ic{font-size:22px;margin-bottom:10px;display:block}
+.hs-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:5px}
+.hs-value{font-size:14px;font-weight:700;color:#fff}
+.hs-value a{color:#fff;text-decoration:none;transition:.2s}.hs-value a:hover{color:var(--cyan)}
+.hs-sub{font-size:11px;color:rgba(255,255,255,.4);margin-top:3px}
+@media(max-width:900px){.hero{padding:60px 24px 0}.hero h1{font-size:40px}.hero-strip{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.hero-strip{grid-template-columns:1fr}}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity .65s ease,transform .65s ease}
+.reveal-l.visible{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal-r.visible{opacity:1;transform:none}
+
+/* ── QUICK CONTACT CARDS ── */
+#quick-contact{padding:72px 80px;background:var(--bg)}
+.qc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:44px}
+.qc-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:28px 22px;text-align:center;transition:.3s;cursor:pointer;position:relative;overflow:hidden}
+.qc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:.35s}
+.qc-card.support::before{background:linear-gradient(90deg,var(--navy),var(--cyan))}
+.qc-card.sales::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.qc-card.xero::before{background:linear-gradient(90deg,#1AB4D7,#00A0E0)}
+.qc-card.general::before{background:linear-gradient(90deg,var(--navy),var(--blue))}
+.qc-card:hover{border-color:#93C5FD;box-shadow:0 10px 36px rgba(32,96,224,.1);transform:translateY(-3px)}
+.qc-card:hover::before{transform:scaleX(1)}
+.qc-ic-wrap{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin:0 auto 16px;transition:transform .25s}
+.qc-card:hover .qc-ic-wrap{transform:scale(1.1)}
+.qc-card h3{font-family:var(--fd);font-size:16px;font-weight:800;color:var(--dark);margin-bottom:8px}
+.qc-card p{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:16px}
+.qc-link{font-size:12px;font-weight:700;color:var(--blue);display:flex;align-items:center;justify-content:center;gap:4px;transition:.2s}
+.qc-card:hover .qc-link{gap:8px}
+@media(max-width:900px){.qc-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.qc-grid{grid-template-columns:1fr}}
+@media(max-width:768px){#quick-contact{padding:60px 24px}}
+
+/* ── MAIN CONTACT SECTION ── */
+#contact-main{padding:88px 80px;background:var(--white);display:grid;grid-template-columns:5fr 4fr;gap:72px;align-items:start}
+
+/* Form */
+.contact-form-wrap{background:var(--white);border-radius:20px;border:1.5px solid var(--border);padding:44px;box-shadow:0 8px 40px rgba(17,24,39,.06)}
+.form-header{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.form-icon{width:52px;height:52px;background:var(--bg2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.form-title{font-family:var(--fd);font-size:26px;font-weight:900;color:var(--dark)}
+.form-subtitle{font-size:13px;color:var(--muted);margin-top:2px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+.fg label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9CA3AF}
+.fg label .req{color:var(--cyan);margin-left:2px}
+.fg input,.fg select,.fg textarea{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:13px 16px;font-size:14px;color:var(--dark);outline:none;font-family:var(--ff);width:100%;transition:border-color .2s,box-shadow .2s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(32,96,224,.08);background:var(--white)}
+.fg input::placeholder,.fg textarea::placeholder{color:#C4C9D4}
+.fg textarea{min-height:110px;resize:vertical}
+.fg select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.fg-checkrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+.check-opt{display:flex;align-items:center;gap:6px;padding:8px 14px;border:1.5px solid var(--border);border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;color:var(--muted);transition:.2s;user-select:none}
+.check-opt:hover{border-color:var(--blue);color:var(--blue)}
+.check-opt input[type=checkbox]{accent-color:var(--blue);width:14px;height:14px;flex-shrink:0}
+.submit-row{display:flex;align-items:center;gap:16px;margin-top:8px;flex-wrap:wrap}
+.submit-btn{flex:1;padding:15px 28px;background:var(--blue);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;min-width:180px}
+.submit-btn:hover{background:var(--navy);transform:translateY(-1px);box-shadow:0 6px 20px rgba(32,96,224,.3)}
+.submit-note{font-size:12px;color:var(--muted);line-height:1.5}
+.form-success{display:none;background:#ECFDF5;border:1.5px solid #86EFAC;border-radius:12px;padding:22px 24px;margin-top:16px}
+.form-success.show{display:flex;align-items:flex-start;gap:14px}
+.fs-ic{font-size:24px;flex-shrink:0;margin-top:2px}
+.fs-title{font-size:15px;font-weight:700;color:#166534;margin-bottom:4px}
+.fs-sub{font-size:13px;color:#166534;opacity:.8;line-height:1.6}
+@media(max-width:900px){.form-row{grid-template-columns:1fr}.contact-form-wrap{padding:28px 22px}}
+
+/* Contact Info Panel */
+.contact-info{display:flex;flex-direction:column;gap:20px}
+
+.ci-card{background:var(--navy);border-radius:16px;padding:32px;position:relative;overflow:hidden;color:#fff}
+.ci-card::before{content:'';position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:rgba(0,160,224,.1);pointer-events:none}
+.ci-head{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;margin-bottom:6px}
+.ci-sub{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:24px;line-height:1.6}
+.ci-detail{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}
+.ci-detail:last-child{margin-bottom:0}
+.ci-ic{width:36px;height:36px;border-radius:9px;background:rgba(0,160,224,.2);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:2px}
+.ci-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:3px}
+.ci-val{font-size:14px;font-weight:600;color:#fff;line-height:1.5}
+.ci-val a{color:#fff;text-decoration:none;transition:.2s}.ci-val a:hover{color:var(--cyan)}
+
+.hours-card{background:var(--bg);border:1.5px solid var(--border);border-radius:16px;padding:28px}
+.hours-title{font-family:var(--fd);font-size:17px;font-weight:800;color:var(--dark);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--border)}
+.hours-row:last-child{border-bottom:none}
+.hr-day{font-size:13px;font-weight:600;color:var(--ink)}
+.hr-time{font-size:13px;font-weight:700;color:var(--blue)}
+.hr-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:100px;letter-spacing:.05em;text-transform:uppercase}
+.hr-badge.open{background:#ECFDF5;color:#166534}
+.hr-badge.managed{background:#EFF6FF;color:#1E3A8A}
+
+.response-card{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:16px;padding:28px;text-align:center}
+.rc-val{font-family:var(--fd);font-size:52px;font-weight:900;color:#fff;line-height:1;margin-bottom:6px}
+.rc-val span{color:var(--cyan);font-size:28px}
+.rc-label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px}
+.rc-sub{font-size:13px;color:rgba(255,255,255,.6);line-height:1.65}
+
+@media(max-width:900px){#contact-main{grid-template-columns:1fr;padding:60px 24px}}
+
+/* ── LOCATIONS MAP VISUAL ── */
+#location{padding:80px 80px;background:var(--bg)}
+.loc-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.loc-map{background:var(--navy);border-radius:20px;padding:48px;position:relative;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:flex-end}
+.loc-map::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.loc-map::after{content:'';position:absolute;top:-60px;right:-60px;width:250px;height:250px;border-radius:50%;background:rgba(0,160,224,.12);pointer-events:none}
+.map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;z-index:2}
+.map-dot{width:20px;height:20px;background:var(--cyan);border-radius:50%;margin:0 auto 6px;box-shadow:0 0 0 8px rgba(0,160,224,.2),0 0 0 16px rgba(0,160,224,.08);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 8px rgba(0,160,224,.2),0 0 0 16px rgba(0,160,224,.08)}50%{box-shadow:0 0 0 12px rgba(0,160,224,.15),0 0 0 24px rgba(0,160,224,.05)}}
+.map-label{font-family:var(--fd);font-size:13px;font-weight:800;color:#fff;white-space:nowrap;background:rgba(0,160,224,.4);border:1px solid rgba(0,160,224,.5);border-radius:100px;padding:4px 12px;backdrop-filter:blur(4px)}
+.map-footer{position:relative;z-index:2}
+.map-addr{font-size:16px;font-weight:700;color:#fff;margin-bottom:4px}
+.map-city{font-size:13px;color:rgba(255,255,255,.5)}
+.loc-details{display:flex;flex-direction:column;gap:20px}
+.ld-title{font-family:var(--fd);font-size:36px;font-weight:900;color:var(--dark);line-height:1.15;margin-bottom:4px}
+.ld-title span{color:var(--blue)}
+.ld-desc{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:8px}
+.coverage-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cov-item{display:flex;align-items:center;gap:10px;padding:13px 16px;background:var(--white);border:1.5px solid var(--border);border-radius:10px;font-size:13px;font-weight:600;color:var(--ink);transition:.2s}
+.cov-item:hover{border-color:var(--blue);color:var(--blue)}
+.cov-ic{font-size:18px}
+@media(max-width:900px){#location{padding:60px 24px}.loc-inner{grid-template-columns:1fr}.loc-map{min-height:260px}}
+
+/* ── FAQ ── */
+#faq{padding:80px 80px;background:var(--navy)}
+.faq-inner{display:grid;grid-template-columns:1fr 2fr;gap:72px;align-items:start}
+.faq-left p{font-size:15px;color:rgba(255,255,255,.55);line-height:1.8;margin-top:14px}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;transition:.2s}
+.faq-item:hover{border-color:rgba(0,160,224,.3)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;cursor:pointer;font-size:14px;font-weight:700;color:#fff;gap:14px}
+.faq-q:hover{color:var(--cyan)}
+.faq-arrow{font-size:18px;color:rgba(255,255,255,.35);flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-arrow{transform:rotate(180deg);color:var(--cyan)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+.faq-item.open .faq-a{max-height:200px}
+.faq-a-inner{padding:0 22px 18px;font-size:13px;color:rgba(255,255,255,.5);line-height:1.75}
+@media(max-width:900px){#faq{padding:60px 24px}.faq-inner{grid-template-columns:1fr}}
+
+/* ── WHAT HAPPENS NEXT ── */
+#next-steps{padding:72px 80px;background:var(--white)}
+.ns-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:52px;position:relative}
+.ns-grid::before{content:'';position:absolute;top:28px;left:calc(12.5% + 14px);right:calc(12.5% + 14px);height:2px;background:var(--border);z-index:0}
+.ns-card{text-align:center;position:relative;z-index:1}
+.ns-num{width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--fd);font-size:22px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;border:4px solid var(--white);box-shadow:0 0 0 2px var(--blue)}
+.ns-card h4{font-family:var(--fd);font-size:16px;font-weight:800;color:var(--dark);margin-bottom:8px}
+.ns-card p{font-size:12px;color:var(--muted);line-height:1.7}
+@media(max-width:900px){.ns-grid{grid-template-columns:1fr 1fr}.ns-grid::before{display:none}}
+@media(max-width:500px){.ns-grid{grid-template-columns:1fr}}
+@media(max-width:768px){#next-steps{padding:60px 24px}}
+
+/* ── FOOTER ── */
+footer{background:#0A0E18;padding:56px 80px 28px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ft-logo{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;margin-bottom:14px}
+.ft-logo span{color:var(--cyan)}
+.ft-brand p{font-size:12px;color:rgba(255,255,255,.32);line-height:1.8;max-width:240px}
+.ft-col h5{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;transition:.2s}
+.ft-col a:hover{color:rgba(255,255,255,.8)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:8px}
+@media(max-width:900px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){footer{padding:48px 24px 24px}.ft-grid{grid-template-columns:1fr}.ft-bottom{flex-direction:column}}
+
+.scroll-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--cyan);color:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;z-index:999;opacity:0;transform:translateY(16px);transition:.3s;box-shadow:0 4px 16px rgba(0,160,224,.4)}
+.scroll-top.show{opacity:1;transform:translateY(0)}.scroll-top:hover{background:#0090c8}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="logo-text">EITS<span>.</span>Fiji</a>
+  <ul class="nav-links">
+    <li><a href="EITS_Services.html">Services</a></li>
+    <li><a href="EITS_Products.html">Products</a></li>
+    <li><a href="EITS_About_Us.html">About</a></li>
+    <li><a href="index.html#xero">Xero</a></li>
+    <li><a href="#" class="active">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+6797220501" class="btn-ghost-nav">📞 +679 722 0501</a>
+    <a href="#contact-main" class="btn-cyan-nav">Send Enquiry →</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="EITS_Services.html" onclick="toggleMenu()">Services</a>
+  <a href="EITS_Products.html" onclick="toggleMenu()">Products</a>
+  <a href="EITS_About_Us.html" onclick="toggleMenu()">About</a>
+  <a href="#contact-main" onclick="toggleMenu()">Send Enquiry</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bc"><a href="index.html">Home</a><span>›</span><span style="color:rgba(255,255,255,.65)">Contact Us</span></div>
+  <div class="hero-pill">We Respond Within the Hour</div>
+  <div class="hero-inner">
+    <h1>Let's Talk About<br>Your <span>IT Needs</span></h1>
+    <p class="hero-desc">Whether you need managed IT in Suva, Xero advisory in Nadi, enterprise cybersecurity across Fiji, or a free product demo — our team is ready. Reach us by phone, email, or the form below and we'll be in touch fast.</p>
+  </div>
+  <div class="hero-strip">
+    <div class="hs-item"><span class="hs-ic">📍</span><div class="hs-label">Head Office</div><div class="hs-value">22 Disraeli Road, Suva</div><div class="hs-sub">Fiji Islands</div></div>
+    <div class="hs-item"><span class="hs-ic">📞</span><div class="hs-label">Call Us</div><div class="hs-value"><a href="tel:+6797220501">+(679) 722 0501</a></div><div class="hs-sub">Mon–Fri 8am–5pm</div></div>
+    <div class="hs-item"><span class="hs-ic">✉️</span><div class="hs-label">Email</div><div class="hs-value"><a href="mailto:support@eitsfiji.com">support@eitsfiji.com</a></div><div class="hs-sub">Reply within 1 hour</div></div>
+    <div class="hs-item"><span class="hs-ic">🕐</span><div class="hs-label">After Hours</div><div class="hs-value">24/7 Support</div><div class="hs-sub">For managed clients</div></div>
+  </div>
+</div>
+
+<!-- QUICK CONTACT CARDS -->
+<section id="quick-contact">
+  <div class="reveal" style="text-align:center;max-width:580px;margin:0 auto">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px">How Can We Help?</div>
+    <h2 style="font-family:var(--fd);font-size:40px;font-weight:900;color:var(--dark);line-height:1.1;letter-spacing:-.02em">Choose the Right<br><span style="color:var(--blue)">Enquiry Type</span></h2>
+  </div>
+  <div class="qc-grid">
+    <div class="qc-card support reveal">
+      <div class="qc-ic-wrap" style="background:#EFF6FF"><span style="font-size:24px">🛠️</span></div>
+      <h3>Technical Support</h3>
+      <p>Existing managed IT client needing helpdesk support, troubleshooting, or urgent assistance.</p>
+      <a href="mailto:support@eitsfiji.com" class="qc-link">Email Support →</a>
+    </div>
+    <div class="qc-card sales reveal">
+      <div class="qc-ic-wrap" style="background:#F0FDF4"><span style="font-size:24px">💼</span></div>
+      <h3>New Business</h3>
+      <p>Enquire about managed IT, cybersecurity, cloud, cabling, CCTV, or any of our services for your business.</p>
+      <a href="#contact-main" class="qc-link">Send Enquiry →</a>
+    </div>
+    <div class="qc-card xero reveal">
+      <div class="qc-ic-wrap" style="background:#E0F7FF"><span style="font-size:24px">📊</span></div>
+      <h3>Xero Advisory</h3>
+      <p>Xero setup, FRCS payroll compliance, data migration, or staff training — talk to our certified Xero team.</p>
+      <a href="#contact-main" class="qc-link">Talk to Xero Team →</a>
+    </div>
+    <div class="qc-card general reveal">
+      <div class="qc-ic-wrap" style="background:#FFF7ED"><span style="font-size:24px">🖥️</span></div>
+      <h3>Product Demo</h3>
+      <p>Request a free live demo of our POS, inventory, resort management, or payroll software solutions.</p>
+      <a href="#contact-main" class="qc-link">Request Free Demo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTACT SECTION -->
+<section id="contact-main">
+  <!-- FORM -->
+  <div class="contact-form-wrap reveal-l">
+    <div class="form-header">
+      <div class="form-icon">✉️</div>
+      <div>
+        <div class="form-title">Send Us an Enquiry</div>
+        <div class="form-subtitle">We'll respond within 1 hour during business hours</div>
+      </div>
+    </div>
+    <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+      <div class="form-row">
+        <div class="fg">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="fname" placeholder="Your first name" required>
+        </div>
+        <div class="fg">
+          <label>Last Name</label>
+          <input type="text" placeholder="Your last name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Business Email <span class="req">*</span></label>
+          <input type="email" id="email" placeholder="you@company.com.fj" required>
+        </div>
+        <div class="fg">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+679 XXX XXXX">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Company / Business Name</label>
+        <input type="text" placeholder="Your business name">
+      </div>
+      <div class="fg">
+        <label>Enquiry Type <span class="req">*</span></label>
+        <select required>
+          <option value="">— Select what you need help with —</option>
+          <optgroup label="IT Services">
+            <option>Free IT Health Check</option>
+            <option>Managed IT Services</option>
+            <option>Cybersecurity & Firewall</option>
+            <option>Cloud & Microsoft 365</option>
+            <option>Network & Structural Cabling</option>
+            <option>Wireless Networks</option>
+            <option>CCTV & Surveillance</option>
+            <option>Data Backup & Recovery</option>
+            <option>ICT Audit</option>
+          </optgroup>
+          <optgroup label="Software Development">
+            <option>Custom Software Development</option>
+            <option>Website Development</option>
+            <option>Mobile App Development</option>
+          </optgroup>
+          <optgroup label="Products — Free Demo">
+            <option>Retail POS Demo</option>
+            <option>Auto Parts POS Demo</option>
+            <option>Inventory Management Demo</option>
+            <option>Resort Management Demo</option>
+            <option>Payroll Solution Demo</option>
+          </optgroup>
+          <optgroup label="Xero">
+            <option>Xero Setup & Advisory</option>
+            <option>FRCS Payroll Compliance</option>
+            <option>Xero Data Migration</option>
+            <option>Xero Staff Training</option>
+          </optgroup>
+          <option>General Enquiry</option>
+          <option>Technical Support</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>How urgent is this?</label>
+        <div class="fg-checkrow">
+          <label class="check-opt"><input type="radio" name="urgency" value="asap"> 🔴 ASAP</label>
+          <label class="check-opt"><input type="radio" name="urgency" value="this_week" checked> 🟡 This week</label>
+          <label class="check-opt"><input type="radio" name="urgency" value="planning"> 🟢 Planning ahead</label>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Tell us about your business & what you need <span class="req">*</span></label>
+        <textarea id="message" placeholder="e.g. We're a 30-person hospitality business in Suva. We're looking for managed IT support and want to explore cloud migration. We currently use on-prem servers..." required></textarea>
+      </div>
+      <div class="fg">
+        <label>How did you hear about us?</label>
+        <select>
+          <option value="">— Select an option —</option>
+          <option>Google Search</option>
+          <option>Word of Mouth / Referral</option>
+          <option>Social Media</option>
+          <option>Existing Client</option>
+          <option>Government / NGO Network</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="submit-row">
+        <button type="submit" class="submit-btn">Send Enquiry →</button>
+        <div class="submit-note">🔒 Your information is kept confidential and never shared with third parties.</div>
+      </div>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <div class="fs-ic">✅</div>
+      <div>
+        <div class="fs-title">Enquiry Received — Thank You!</div>
+        <div class="fs-sub">We've received your message and will be in touch within 1 hour during business hours (Mon–Fri 8am–5pm). For urgent IT issues, please call us directly on +(679) 722 0501.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INFO PANEL -->
+  <div class="contact-info">
+
+    <div class="ci-card reveal-r">
+      <div class="ci-head">Express IT Solutions</div>
+      <div class="ci-sub">Fiji's trusted technology partner — managed IT, cybersecurity, cloud, Xero advisory and software products since 2020.</div>
+      <div class="ci-detail"><div class="ci-ic">📍</div><div><div class="ci-lbl">Head Office</div><div class="ci-val">22 Disraeli Road<br>Suva, Fiji Islands</div></div></div>
+      <div class="ci-detail"><div class="ci-ic">📞</div><div><div class="ci-lbl">Phone</div><div class="ci-val"><a href="tel:+6797220501">+(679) 722 0501</a></div></div></div>
+      <div class="ci-detail"><div class="ci-ic">✉️</div><div><div class="ci-lbl">Email</div><div class="ci-val"><a href="mailto:support@eitsfiji.com">support@eitsfiji.com</a></div></div></div>
+    </div>
+
+    <div class="hours-card reveal-r">
+      <div class="hours-title">🕐 Office Hours</div>
+      <div class="hours-row"><span class="hr-day">Monday – Friday</span><span class="hr-time">8:00am – 5:00pm</span></div>
+      <div class="hours-row"><span class="hr-day">Saturday</span><div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px"><span class="hr-time" style="color:var(--muted)">Closed</span></div></div>
+      <div class="hours-row"><span class="hr-day">Sunday & Public Holidays</span><span class="hr-time" style="color:var(--muted)">Closed</span></div>
+      <div class="hours-row" style="border-bottom:none"><span class="hr-day">Managed IT Clients</span><span class="hr-badge managed">24 / 7</span></div>
+    </div>
+
+    <div class="response-card reveal-r">
+      <div class="rc-label">Our Response SLA</div>
+      <div class="rc-val">15<span>min</span></div>
+      <div class="rc-sub">For managed IT clients, we guarantee a 15-minute response to all critical incidents — around the clock, 365 days a year.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="loc-inner">
+    <div class="loc-map reveal-l">
+      <div class="map-pin">
+        <div class="map-dot"></div>
+        <div class="map-label">📍 EITS Fiji HQ</div>
+      </div>
+      <div class="map-footer">
+        <div class="map-addr">22 Disraeli Road</div>
+        <div class="map-city">Suva, Fiji Islands</div>
+      </div>
+    </div>
+    <div class="loc-details reveal-r">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px">Our Coverage</div>
+      <div class="ld-title">Based in Suva.<br><span>Serving All of Fiji.</span></div>
+      <p class="ld-desc">Our head office is located in Suva, Fiji's capital and commercial hub. Our engineers provide on-site support across Suva, Nadi, Lautoka, and nationwide — with remote management capability for clients across the Pacific.</p>
+      <div class="coverage-grid">
+        <div class="cov-item"><span class="cov-ic">🏙️</span>Suva (HQ)</div>
+        <div class="cov-item"><span class="cov-ic">✈️</span>Nadi & Airport</div>
+        <div class="cov-item"><span class="cov-ic">🏭</span>Lautoka</div>
+        <div class="cov-item"><span class="cov-ic">🏝️</span>Outer Islands (Remote)</div>
+        <div class="cov-item"><span class="cov-ic">🌏</span>Pacific Region</div>
+        <div class="cov-item"><span class="cov-ic">☁️</span>Cloud — Anywhere</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT HAPPENS NEXT -->
+<section id="next-steps">
+  <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px">Our Process</div>
+    <h2 style="font-family:var(--fd);font-size:40px;font-weight:900;color:var(--dark);line-height:1.1;letter-spacing:-.02em">What Happens<br><span style="color:var(--blue)">After You Contact Us</span></h2>
+  </div>
+  <div class="ns-grid">
+    <div class="ns-card reveal">
+      <div class="ns-num">1</div>
+      <h4>We Receive Your Enquiry</h4>
+      <p>Your message reaches our team immediately. During business hours, you'll get an acknowledgement within minutes.</p>
+    </div>
+    <div class="ns-card reveal">
+      <div class="ns-num" style="background:var(--cyan)">2</div>
+      <h4>Initial Consultation Call</h4>
+      <p>One of our certified IT consultants will call or email to understand your business needs in detail — no jargon, no pressure.</p>
+    </div>
+    <div class="ns-card reveal">
+      <div class="ns-num">3</div>
+      <h4>Tailored Proposal</h4>
+      <p>We prepare a clear, detailed proposal specific to your business — services, timeline, and pricing in plain language.</p>
+    </div>
+    <div class="ns-card reveal">
+      <div class="ns-num" style="background:var(--cyan)">4</div>
+      <h4>We Get Started</h4>
+      <p>Once you're happy, we onboard your business and get to work. Most implementations begin within days, not weeks.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-inner">
+    <div class="reveal-l">
+      <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(0,160,224,.8);margin-bottom:12px">Common Questions</div>
+      <h2 style="font-family:var(--fd);font-size:36px;font-weight:900;color:#fff;line-height:1.15;letter-spacing:-.02em">Frequently<br><span style="color:var(--cyan)">Asked</span></h2>
+      <p>Can't find what you're looking for? Call us on +(679) 722 0501 or email support@eitsfiji.com — we're happy to help.</p>
+    </div>
+    <div class="faq-list reveal-r">
+      <div class="faq-item open">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Do you offer a free IT Health Check?</span>
+          <span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Yes — we offer a free, no-obligation IT Health Check for any Fiji business. Our team reviews your current technology environment and provides a plain-English report identifying risks, inefficiencies, and recommendations. Zero cost, zero commitment.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>What areas of Fiji do you service?</span>
+          <span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Our head office is in Suva and we provide on-site support across Suva, Nadi, Lautoka, and nationwide. For managed IT clients, we also provide 24/7 remote support from anywhere in Fiji — including outer islands via remote management tools.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>How fast do you respond to IT issues?</span>
+          <span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">For managed IT clients, we guarantee a 15-minute response to critical incidents, 24/7. For general enquiries submitted via this form, you'll hear from us within 1 business hour during office hours (Mon–Fri 8am–5pm).</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Are you a certified Xero partner?</span>
+          <span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. EITS Fiji is one of Fiji's select Xero Adviser Certified partners. We handle everything from initial Xero setup and data migration to FRCS payroll compliance, staff training, and ongoing Xero advisory.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Can I request a free product demo?</span>
+          <span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely. We offer free, live demos for all our software products — Retail POS, Auto Parts POS, Inventory Management, Resort Management, Payroll, and Xero Accounting. Simply select the product you're interested in from the enquiry form above and we'll schedule a demo at your convenience.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>Do you work with small businesses or only large enterprises?</span>
+          <span class="faq-arrow">⌄</span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">We work with businesses of all sizes — from single-person startups to multi-location enterprises. Our solutions are scalable and priced to suit your business stage. Whether you're a small retail shop or a large hospitality group, we have the right solution for you.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-logo">EITS<span>.</span>Fiji</div>
+      <p>Fiji's trusted technology partner — IT services, software products, and Xero advisory. 22 Disraeli Road, Suva, Fiji.</p>
+    </div>
+    <div class="ft-col"><h5>Services</h5><ul>
+      <li><a href="EITS_Service_Managed_IT.html">Managed IT</a></li>
+      <li><a href="EITS_Service_Structural_Cabling.html">Structural Cabling</a></li>
+      <li><a href="EITS_Service_Wireless_Networks.html">Wireless Networks</a></li>
+      <li><a href="EITS_Service_Software_Dev.html">Software Dev</a></li>
+      <li><a href="EITS_Service_Website_Dev.html">Website Dev</a></li>
+      <li><a href="EITS_Service_ICT_Audit.html">ICT Audit</a></li>
+    </ul></div>
+    <div class="ft-col"><h5>Products</h5><ul>
+      <li><a href="EITS_Product_Retail_POS.html">Retail POS</a></li>
+      <li><a href="EITS_Product_AutoParts_POS.html">Auto Parts POS</a></li>
+      <li><a href="EITS_Product_Inventory.html">Inventory Mgmt</a></li>
+      <li><a href="EITS_Product_Xero.html">Xero Accounting</a></li>
+      <li><a href="EITS_Product_Resort.html">Resort Mgmt</a></li>
+      <li><a href="EITS_Product_Payroll.html">Payroll Solution</a></li>
+    </ul></div>
+    <div class="ft-col"><h5>Company</h5><ul>
+      <li><a href="EITS_About_Us.html">About EITS</a></li>
+      <li><a href="EITS_About_Us.html#team">Our Team</a></li>
+      <li><a href="index.html#industries">Industries</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2025 Express IT Solutions Pte Limited (EITS Fiji) · All rights reserved</span>
+    <span>support@eitsfiji.com · +(679) 722 0501</span>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Nav
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+});
+
+// Hamburger
+function toggleMenu() {
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+
+// Reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal, .reveal-l, .reveal-r').forEach(el => obs.observe(el));
+
+// FAQ accordion
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const fname = document.getElementById('fname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const msg = document.getElementById('message').value.trim();
+  if (!fname || !email || !msg) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+  window.scrollTo({ top: document.getElementById('contact-main').offsetTop - 100, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

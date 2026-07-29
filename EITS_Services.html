@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Our Services — EITS Fiji</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2060E0;--navy:#001850;--navy2:#0A2040;--cyan:#00A0E0;
+  --dark:#111827;--ink:#1F2937;--muted:#6B7280;--border:#E5E7EB;
+  --bg:#F9FAFB;--bg2:#EFF6FF;--white:#fff;
+  --ff:'Inter',sans-serif;--fd:'Raleway',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff);color:var(--dark);background:var(--white);overflow-x:hidden}
+nav{background:var(--navy);padding:0 80px;height:78px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;transition:box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 24px rgba(0,24,80,.5)}
+.logo-text{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;letter-spacing:.02em;text-decoration:none}
+.logo-text span{color:var(--cyan)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;transition:color .2s;padding:4px 0;border-bottom:2px solid transparent}
+.nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--cyan)}
+.nav-right{display:flex;gap:12px;align-items:center}
+.btn-ghost-nav{padding:9px 18px;border:1.5px solid rgba(255,255,255,.25);color:#fff;border-radius:6px;font-size:12px;font-weight:600;background:transparent;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center}
+.btn-ghost-nav:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.08)}
+.btn-cyan-nav{padding:10px 22px;background:var(--cyan);border:none;color:#fff;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center}
+.btn-cyan-nav:hover{background:#0090c8;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mob-menu{display:none;position:fixed;top:78px;left:0;right:0;background:var(--navy2);border-bottom:1px solid rgba(255,255,255,.1);padding:24px;z-index:99;flex-direction:column;gap:14px}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:15px;font-weight:600;color:rgba(255,255,255,.75);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+@media(max-width:768px){nav{padding:0 24px}.nav-links,.nav-right{display:none}.hamburger{display:flex}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity .65s ease,transform .65s ease}
+.reveal-l.visible{opacity:1;transform:none}
+.reveal-r{opacity:0;transform:translateX(24px);transition:opacity .65s ease,transform .65s ease}
+.reveal-r.visible{opacity:1;transform:none}
+.sec-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
+.sec-title{font-family:var(--fd);font-size:44px;font-weight:900;color:var(--dark);line-height:1.1;letter-spacing:-.02em}
+.sec-title span{color:var(--blue)}
+.sec-title.light{color:#fff}
+.sec-title.light span{color:var(--cyan)}
+.btn-cy{padding:13px 26px;background:var(--cyan);border:none;color:#fff;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-cy:hover{background:#0090c8;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,160,224,.3)}
+.btn-blue{padding:13px 26px;background:var(--blue);border:none;color:#fff;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-blue:hover{background:var(--navy);transform:translateY(-1px)}
+.btn-wh-o{padding:12px 24px;background:transparent;border:2px solid rgba(255,255,255,.3);color:#fff;border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--ff);transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-wh-o:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)}
+.cta-strip{background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 100%);padding:72px 80px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.cta-h{font-family:var(--fd);font-size:38px;font-weight:900;color:#fff;line-height:1.15;margin-bottom:12px}
+.cta-p{font-size:15px;color:rgba(255,255,255,.6);line-height:1.75}
+.cta-btns{display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.btn-wh{padding:15px 28px;background:#fff;color:var(--blue);border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ff);white-space:nowrap;transition:.2s;text-decoration:none;display:inline-flex}
+.btn-wh:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.btn-ghost-wh{padding:13px 22px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.3);color:#fff;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--ff);white-space:nowrap;transition:.2s;text-decoration:none;display:inline-flex}
+.btn-ghost-wh:hover{background:rgba(255,255,255,.2)}
+.cta-note{font-size:11px;color:rgba(255,255,255,.3);text-align:right}
+@media(max-width:768px){.cta-strip{grid-template-columns:1fr;padding:48px 24px}.cta-btns{align-items:flex-start}}
+.contact-band{background:var(--dark);padding:36px 80px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.cb-item{display:flex;align-items:center;gap:12px}
+.cb-ic{width:40px;height:40px;background:rgba(0,160,224,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.cb-l{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:2px}
+.cb-v{font-size:13px;font-weight:600;color:#fff}
+.cb-v a{color:#fff;text-decoration:none;transition:.2s}
+.cb-v a:hover{color:var(--cyan)}
+.cb-div{width:1px;height:36px;background:rgba(255,255,255,.1)}
+@media(max-width:768px){.contact-band{padding:28px 24px;flex-direction:column;align-items:flex-start}.cb-div{display:none}}
+footer{background:#0A0E18;padding:56px 80px 28px}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.ft-logo{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;margin-bottom:14px}
+.ft-logo span{color:var(--cyan)}
+.ft-brand p{font-size:12px;color:rgba(255,255,255,.32);line-height:1.8;max-width:240px}
+.ft-col h5{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft-col a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;transition:.2s}
+.ft-col a:hover{color:rgba(255,255,255,.8)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:22px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:8px}
+@media(max-width:900px){.ft-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){footer{padding:48px 24px 24px}.ft-grid{grid-template-columns:1fr}.ft-bottom{flex-direction:column}}
+.scroll-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--cyan);color:#fff;border:none;border-radius:50%;font-size:18px;cursor:pointer;z-index:999;opacity:0;transform:translateY(16px);transition:.3s;box-shadow:0 4px 16px rgba(0,160,224,.4)}
+.scroll-top.show{opacity:1;transform:translateY(0)}
+.scroll-top:hover{background:#0090c8}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@media(max-width:768px){.sec-title{font-size:32px}}
+
+.hero{background:var(--navy);padding:96px 80px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(32,96,224,.18),transparent 70%);top:-200px;right:-150px;pointer-events:none}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(0,160,224,.15);border:1px solid rgba(0,160,224,.35);border-radius:100px;padding:6px 16px;font-size:11px;font-weight:700;color:var(--cyan);letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px;animation:fadeDown .6s ease;position:relative;z-index:1}
+.hero-content{position:relative;z-index:1;max-width:760px}
+.hero h1{font-family:var(--fd);font-size:62px;font-weight:900;color:#fff;line-height:1.06;letter-spacing:-.03em;margin-bottom:20px;animation:fadeUp .7s ease .1s both}
+.hero h1 span{color:var(--cyan)}
+.hero-desc{font-size:17px;color:rgba(255,255,255,.65);line-height:1.8;max-width:620px;margin-bottom:36px;animation:fadeUp .7s ease .2s both}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .7s ease .3s both}
+.hero-breadcrumb{display:flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.4);margin-bottom:28px;font-weight:500;position:relative;z-index:1}
+.hero-breadcrumb a{color:rgba(255,255,255,.4);text-decoration:none}.hero-breadcrumb a:hover{color:var(--cyan)}
+.hero-breadcrumb span{color:rgba(255,255,255,.25)}
+/* SERVICES GRID */
+#services-grid{padding:88px 80px;background:var(--white)}
+.svc-overview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{border:1.5px solid var(--border);border-radius:16px;padding:36px 30px;transition:.3s;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--cyan));transform:scaleX(0);transform-origin:left;transition:.4s}
+.svc-card:hover{border-color:#93C5FD;box-shadow:0 14px 44px rgba(32,96,224,.1);transform:translateY(-4px)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-ic-wrap{width:60px;height:60px;background:#EFF6FF;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;transition:transform .25s;flex-shrink:0}
+.svc-card:hover .svc-ic-wrap{transform:scale(1.08)}
+.svc-card h3{font-family:var(--fd);font-size:22px;font-weight:900;color:var(--dark);margin-bottom:8px}
+.svc-tagline{font-size:12px;font-weight:700;color:var(--cyan);letter-spacing:.04em;text-transform:uppercase;margin-bottom:14px}
+.svc-card p{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:20px;flex:1}
+.svc-features{display:flex;flex-direction:column;gap:7px;margin-bottom:24px}
+.sf{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--ink);font-weight:500}
+.sf-dot{width:16px;height:16px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;flex-shrink:0;margin-top:2px;font-weight:700}
+.svc-link{display:inline-flex;align-items:center;gap:6px;padding:11px 20px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-weight:700;color:var(--blue);text-decoration:none;transition:.2s;align-self:flex-start}
+.svc-link:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+@media(max-width:1024px){.svc-overview-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.svc-overview-grid{grid-template-columns:1fr}}
+@media(max-width:768px){#services-grid{padding:60px 24px}}
+/* WHY STRIP */
+#why{background:var(--navy);padding:80px 80px}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px}
+.wc{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px 22px;transition:.25s}
+.wc:hover{background:rgba(255,255,255,.1)}
+.wc-ic{font-size:28px;margin-bottom:14px;display:block}
+.wc h4{font-family:var(--fd);font-size:17px;font-weight:800;color:#fff;margin-bottom:8px}
+.wc p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.75}
+@media(max-width:900px){.why-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){#why{padding:60px 24px}}
+</style>
+</head>
+<body>
+
+
+<nav id="navbar">
+  <a href="index.html" class="logo-text">EITS<span>.</span>Fiji</a>
+  <ul class="nav-links">
+    <li><a href="EITS_Services.html" class="active">Services</a></li>
+    <li><a href="EITS_About_Us.html" >About</a></li>
+    <li><a href="index.html#industries">Industries</a></li>
+    <li><a href="index.html#xero">Xero</a></li>
+    <li><a href="EITS_Contact_Us.html">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+6797220501" class="btn-ghost-nav">📞 +679 722 0501</a>
+    <a href="EITS_Contact_Us.html" class="btn-cyan-nav">Free IT Health Check →</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="EITS_Services.html" onclick="toggleMenu()">Services</a>
+  <a href="EITS_About_Us.html" onclick="toggleMenu()">About</a>
+  <a href="index.html#industries" onclick="toggleMenu()">Industries</a>
+  <a href="index.html#xero" onclick="toggleMenu()">Xero</a>
+  <a href="EITS_Contact_Us.html" onclick="toggleMenu()">Contact</a>
+</div>
+<div class="hero">
+  <div class="hero-breadcrumb"><a href="index.html">Home</a><span>›</span><span style="color:rgba(255,255,255,.65)">Our Services</span></div>
+  <div class="hero-pill">6 Core Technology Services</div>
+  <div class="hero-content">
+    <h1>Everything Your Business<br>Needs to <span>Thrive</span></h1>
+    <p class="hero-desc">From managed IT and cybersecurity to custom software development and website design — Express IT Solutions delivers end-to-end technology services tailored to Fiji's businesses. One trusted partner for all your IT needs.</p>
+    <div class="hero-btns">
+      <a href="EITS_Contact_Us.html" class="btn-cy">Get a Free Consultation →</a>
+      <a href="EITS_About_Us.html" class="btn-wh-o">About EITS</a>
+    </div>
+  </div>
+</div>
+
+<section id="services-grid">
+  <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 56px">
+    <div class="sec-eyebrow">What We Do</div>
+    <h2 class="sec-title">Our <span>Complete</span> Service Portfolio</h2>
+    <p style="font-size:15px;color:var(--muted);line-height:1.8;margin-top:14px">We understand your unique business needs and create tailored solutions that drive efficiency, growth, and success. Whether you're a startup or an enterprise, we empower you to stay ahead.</p>
+  </div>
+  <div class="svc-overview-grid">
+    <div class="svc-card reveal">
+      <div class="svc-ic-wrap">🖥️</div>
+      <h3>Managed IT Services</h3>
+      <div class="svc-tagline">Simplify Your Technology, Boost Efficiency</div>
+      <p>Outsource your entire IT department to our certified team. Proactive 24/7 monitoring, helpdesk, and flat-rate pricing — with a 15-minute SLA response guarantee.</p>
+      <div class="svc-features"><div class="sf"><div class="sf-dot">✓</div>ICT Support & Helpdesk</div><div class="sf"><div class="sf-dot">✓</div>Proactive Network Monitoring</div><div class="sf"><div class="sf-dot">✓</div>Cybersecurity & Risk Management</div><div class="sf"><div class="sf-dot">✓</div>Cloud Solutions & Data Backup</div><div class="sf"><div class="sf-dot">✓</div>ICT Infrastructure Management</div><div class="sf"><div class="sf-dot">✓</div>Remote ICT Management</div></div>
+      <a href="EITS_Service_Managed_IT.html" class="svc-link">Explore Service →</a>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-ic-wrap">🔌</div>
+      <h3>Structural Cabling</h3>
+      <div class="svc-tagline">Reliable, Scalable, Secure Connectivity</div>
+      <p>Professional data cabling solutions that form the physical backbone of your network — from Cat6 copper to high-speed fiber optic, designed for your business.</p>
+      <div class="svc-features"><div class="sf"><div class="sf-dot">✓</div>Structured Cabling Design & Install</div><div class="sf"><div class="sf-dot">✓</div>Cat5e, Cat6, Cat6A, Fiber Optic</div><div class="sf"><div class="sf-dot">✓</div>Network Upgrades & Rewiring</div><div class="sf"><div class="sf-dot">✓</div>Cable Management & Organisation</div><div class="sf"><div class="sf-dot">✓</div>Ongoing Support & Maintenance</div></div>
+      <a href="EITS_Service_Structural_Cabling.html" class="svc-link">Explore Service →</a>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-ic-wrap">📡</div>
+      <h3>Wireless Networks</h3>
+      <div class="svc-tagline">Connecting Your Workforce, Anytime, Anywhere</div>
+      <p>Enterprise-grade Wi-Fi and wireless networking solutions — from mesh coverage and guest Wi-Fi to IoT integration — keeping your team reliably connected.</p>
+      <div class="svc-features"><div class="sf"><div class="sf-dot">✓</div>Enterprise-Grade Wi-Fi Networks</div><div class="sf"><div class="sf-dot">✓</div>Mesh Network Solutions</div><div class="sf"><div class="sf-dot">✓</div>Secure Guest Wi-Fi</div><div class="sf"><div class="sf-dot">✓</div>WLAN Design & Deployment</div><div class="sf"><div class="sf-dot">✓</div>Wireless Security Solutions</div><div class="sf"><div class="sf-dot">✓</div>IoT Integration & Management</div></div>
+      <a href="EITS_Service_Wireless_Networks.html" class="svc-link">Explore Service →</a>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-ic-wrap">💻</div>
+      <h3>Software Development</h3>
+      <div class="svc-tagline">Tailored Solutions to Drive Your Business Forward</div>
+      <p>Custom software from the ground up — web apps, mobile apps, enterprise systems, cloud-based platforms and full integrations built to your exact specifications.</p>
+      <div class="svc-features"><div class="sf"><div class="sf-dot">✓</div>Custom Software Development</div><div class="sf"><div class="sf-dot">✓</div>Web & Mobile Application Development</div><div class="sf"><div class="sf-dot">✓</div>Enterprise Software Solutions</div><div class="sf"><div class="sf-dot">✓</div>Software Integration Services</div><div class="sf"><div class="sf-dot">✓</div>Cloud-Based Software Solutions</div><div class="sf"><div class="sf-dot">✓</div>Ongoing Maintenance & Support</div></div>
+      <a href="EITS_Service_Software_Dev.html" class="svc-link">Explore Service →</a>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-ic-wrap">🌐</div>
+      <h3>Website Development</h3>
+      <div class="svc-tagline">Build Your Online Presence with Expertise</div>
+      <p>Stunning, high-performance websites and e-commerce stores — mobile-first, SEO-optimised and built to convert visitors into customers.</p>
+      <div class="svc-features"><div class="sf"><div class="sf-dot">✓</div>Custom Website Design & Development</div><div class="sf"><div class="sf-dot">✓</div>E-Commerce Development</div><div class="sf"><div class="sf-dot">✓</div>Mobile-Friendly Responsive Design</div><div class="sf"><div class="sf-dot">✓</div>Search Engine Optimisation (SEO)</div><div class="sf"><div class="sf-dot">✓</div>Website Maintenance & Support</div></div>
+      <a href="EITS_Service_Website_Dev.html" class="svc-link">Explore Service →</a>
+    </div>
+    <div class="svc-card reveal">
+      <div class="svc-ic-wrap">🔍</div>
+      <h3>ICT Audit</h3>
+      <div class="svc-tagline">Ensuring Your Systems Are Secure & Compliant</div>
+      <p>Comprehensive IT audit services that assess your entire technology environment — identifying vulnerabilities, compliance gaps, and opportunities to optimise performance.</p>
+      <div class="svc-features"><div class="sf"><div class="sf-dot">✓</div>IT Infrastructure Assessment</div><div class="sf"><div class="sf-dot">✓</div>Security Audits</div><div class="sf"><div class="sf-dot">✓</div>Data & Backup Audits</div><div class="sf"><div class="sf-dot">✓</div>Network Performance Audits</div><div class="sf"><div class="sf-dot">✓</div>Cloud & Asset Management Audits</div><div class="sf"><div class="sf-dot">✓</div>Risk & Vulnerability Assessment</div></div>
+      <a href="EITS_Service_ICT_Audit.html" class="svc-link">Explore Service →</a>
+    </div></div>
+</section>
+
+<section id="why">
+  <div class="reveal" style="max-width:640px">
+    <div class="sec-eyebrow">Why Express IT Solutions</div>
+    <h2 class="sec-title light">One Partner.<br>Every <span>IT Need</span>.</h2>
+  </div>
+  <div class="why-grid">
+    <div class="wc reveal"><span class="wc-ic">🏆</span><h4>Certified Expertise</h4><p>Microsoft, CompTIA, and Xero certified engineers delivering internationally proven solutions to Fiji businesses.</p></div>
+    <div class="wc reveal"><span class="wc-ic">⚡</span><h4>15-Min Response SLA</h4><p>Our 15-minute response guarantee is contractual, not a slogan. We back every managed engagement with measurable SLAs.</p></div>
+    <div class="wc reveal"><span class="wc-ic">🎯</span><h4>Tailored Solutions</h4><p>Every business is unique. We tailor every service to your specific requirements — not a one-size-fits-all package.</p></div>
+    <div class="wc reveal"><span class="wc-ic">🌏</span><h4>Local Fiji Knowledge</h4><p>Deep understanding of Fiji's connectivity, FRCS compliance, and Pacific business environment built into every solution.</p></div>
+  </div>
+</section>
+
+<div class="cta-strip reveal">
+  <div>
+    <div class="cta-h">Not Sure Where<br>to Start?</div>
+    <p class="cta-p">Book a free, no-obligation IT Health Check. Our team reviews your current technology environment and provides a plain-English action plan — zero cost, zero commitment.</p>
+  </div>
+  <div class="cta-btns">
+    <a href="EITS_Contact_Us.html" class="btn-wh">Book Free IT Health Check →</a>
+    <a href="tel:+6797220501" class="btn-ghost-wh">📞 +679 722 0501</a>
+    <span class="cta-note">Fiji-wide coverage · No commitment</span>
+  </div>
+</div>
+
+<div class="contact-band">
+  <div class="cb-item"><div class="cb-ic">📍</div><div><div class="cb-l">Head Office</div><div class="cb-v">22 Disraeli Road, Suva, Fiji</div></div></div>
+  <div class="cb-div"></div>
+  <div class="cb-item"><div class="cb-ic">📞</div><div><div class="cb-l">Phone</div><div class="cb-v"><a href="tel:+6797220501">+(679) 722 0501</a></div></div></div>
+  <div class="cb-div"></div>
+  <div class="cb-item"><div class="cb-ic">✉️</div><div><div class="cb-l">Email</div><div class="cb-v"><a href="mailto:support@eitsfiji.com">support@eitsfiji.com</a></div></div></div>
+  <div class="cb-div"></div>
+  <div class="cb-item"><div class="cb-ic">🕐</div><div><div class="cb-l">Hours</div><div class="cb-v">Mon–Fri 8am–5pm · 24/7 Managed</div></div></div>
+</div>
+
+<footer>
+  <div class="ft-grid">
+    <div>
+      <div class="ft-logo">EITS<span>.</span>Fiji</div>
+      <p>Fiji's trusted managed IT, cybersecurity, cloud, software development and Xero advisory partner. 22 Disraeli Road, Suva, Fiji.</p>
+    </div>
+    <div class="ft-col"><h5>Services</h5><ul>
+      <li><a href="EITS_Service_Managed_IT.html">Managed IT</a></li>
+      <li><a href="EITS_Service_Structural_Cabling.html">Structural Cabling</a></li>
+      <li><a href="EITS_Service_Wireless_Networks.html">Wireless Networks</a></li>
+      <li><a href="EITS_Service_Software_Dev.html">Software Development</a></li>
+      <li><a href="EITS_Service_Website_Dev.html">Website Development</a></li>
+      <li><a href="EITS_Service_ICT_Audit.html">ICT Audit</a></li>
+    </ul></div>
+    <div class="ft-col"><h5>Company</h5><ul>
+      <li><a href="EITS_About_Us.html">About EITS</a></li>
+      <li><a href="EITS_About_Us.html#team">Our Team</a></li>
+      <li><a href="index.html#industries">Industries</a></li>
+      <li><a href="index.html#xero">Xero Advisory</a></li>
+    </ul></div>
+    <div class="ft-col"><h5>Contact</h5><ul>
+      <li><a href="mailto:support@eitsfiji.com">support@eitsfiji.com</a></li>
+      <li><a href="tel:+6797220501">+(679) 722 0501</a></li>
+      <li><a href="#">22 Disraeli Road, Suva</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2025 Express IT Solutions Pte Limited (EITS Fiji) · All rights reserved</span>
+    <span>support@eitsfiji.com · Suva, Fiji</span>
+  </div>
+</footer>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>40);
+  document.getElementById('scrollTop').classList.toggle('show',window.scrollY>400);
+});
+function toggleMenu(){
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
