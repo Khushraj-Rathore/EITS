@@ -22,7 +22,25 @@ nav{background:var(--navy);padding:0 80px;height:78px;display:flex;align-items:c
 nav.scrolled{box-shadow:0 4px 24px rgba(0,24,80,.5)}
 .logo-text{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;text-decoration:none}
 .logo-text span{color:var(--cyan)}
-.nav-links{display:flex;gap:32px;list-style:none}
+/* NAV DROPDOWN */
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-item{position:relative;display:flex;align-items:center;height:78px}
+.nav-item .caret{font-size:10px;margin-left:4px;color:rgba(255,255,255,.4);transition:transform .2s}
+.nav-item:hover .caret{transform:rotate(180deg)}
+.nav-item::after{content:'';position:absolute;top:100%;left:-16px;right:-16px;height:8px}
+.dropdown-menu{display:none;position:absolute;top:calc(100% + 8px);left:0;background:var(--navy2);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:8px;min-width:230px;list-style:none;box-shadow:0 16px 40px rgba(0,0,0,.4);z-index:200}
+.nav-item:hover .dropdown-menu,.nav-item:focus-within .dropdown-menu{display:block}
+.dropdown-menu li a{display:block;padding:10px 14px;font-size:13px;font-weight:500;color:rgba(255,255,255,.65);text-decoration:none;border-radius:6px;border-bottom:none;white-space:nowrap}
+.dropdown-menu li a:hover{background:rgba(255,255,255,.08);color:#fff}
+/* Mobile submenu */
+.mobile-item{display:flex;flex-direction:column}
+.mobile-item-head{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.mobile-item-head a{border-bottom:none;padding:0}
+.mobile-caret{font-size:12px;color:rgba(255,255,255,.4);transition:transform .2s;padding:6px}
+.mobile-item.open .mobile-caret{transform:rotate(180deg)}
+.mobile-submenu{display:none;flex-direction:column;padding-left:14px;gap:2px}
+.mobile-item.open .mobile-submenu{display:flex}
+.mobile-submenu a{font-size:13px;font-weight:500;color:rgba(255,255,255,.55);padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05)}
 .nav-links a{font-size:13px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;transition:.2s;padding:4px 0;border-bottom:2px solid transparent}
 .nav-links a:hover,.nav-links a.active{color:#fff;border-bottom-color:var(--cyan)}
 .nav-right{display:flex;gap:12px;align-items:center}
@@ -235,12 +253,33 @@ footer{background:#0A0E18;padding:56px 80px 28px}
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="index.html" class="logo-text">EITS<span>.</span>Fiji</a>
+  <a href="EITS_B_Navy_Cyan_Premium.html" class="logo-text">EITS<span>.</span>Fiji</a>
   <ul class="nav-links">
-    <li><a href="EITS_Services.html">Services</a></li>
-    <li><a href="EITS_Products.html">Products</a></li>
+    <li class="nav-item">
+      <a href="EITS_Services.html" class="nav-link">Services <span class="caret">▾</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="EITS_Service_Managed_IT.html">Managed IT Services</a></li>
+        <li><a href="EITS_Service_Structural_Cabling.html">Structural Cabling</a></li>
+        <li><a href="EITS_Service_Wireless_Networks.html">Wireless Networks</a></li>
+        <li><a href="EITS_Service_Software_Dev.html">Software Development</a></li>
+        <li><a href="EITS_Service_Website_Dev.html">Website Development</a></li>
+        <li><a href="EITS_Service_ICT_Audit.html">ICT Audit</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a href="EITS_Products.html" class="nav-link">Products <span class="caret">▾</span></a>
+      <ul class="dropdown-menu">
+        <li><a href="EITS_Product_Retail_POS.html">Retail POS Solution</a></li>
+        <li><a href="EITS_Product_AutoParts_POS.html">Autoparts POS Solutions</a></li>
+        <li><a href="EITS_Product_Inventory.html">Inventory Management Solution</a></li>
+        <li><a href="EITS_Product_Payroll.html">Payroll Solution</a></li>
+        <li><a href="EITS_Product_Xero.html">Xero Accounting</a></li>
+        <li><a href="EITS_Product_Resort.html">Resort Management Solution</a></li>
+      </ul>
+    </li>
     <li><a href="EITS_About_Us.html">About</a></li>
-    <li><a href="index.html#xero">Xero</a></li>
+    <li><a href="EITS_B_Navy_Cyan_Premium.html#industries">Industries</a></li>
+    <li><a href="EITS_B_Navy_Cyan_Premium.html#xero">Xero</a></li>
     <li><a href="#" class="active">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -249,16 +288,45 @@ footer{background:#0A0E18;padding:56px 80px 28px}
   </div>
   <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
+
 <div class="mob-menu" id="mobMenu">
-  <a href="EITS_Services.html" onclick="toggleMenu()">Services</a>
-  <a href="EITS_Products.html" onclick="toggleMenu()">Products</a>
-  <a href="EITS_About_Us.html" onclick="toggleMenu()">About</a>
-  <a href="#contact-main" onclick="toggleMenu()">Send Enquiry</a>
+  <div class="mobile-item" id="mobileServices">
+    <div class="mobile-item-head" onclick="toggleSubmenu('mobileServices')">
+      <a href="EITS_Services.html">Services</a>
+      <span class="mobile-caret">▾</span>
+    </div>
+    <div class="mobile-submenu">
+      <a href="EITS_Service_Managed_IT.html">Managed IT Services</a>
+      <a href="EITS_Service_Structural_Cabling.html">Structural Cabling</a>
+      <a href="EITS_Service_Wireless_Networks.html">Wireless Networks</a>
+      <a href="EITS_Service_Software_Dev.html">Software Development</a>
+      <a href="EITS_Service_Website_Dev.html">Website Development</a>
+      <a href="EITS_Service_ICT_Audit.html">ICT Audit</a>
+    </div>
+  </div>
+  <div class="mobile-item" id="mobileProducts">
+    <div class="mobile-item-head" onclick="toggleSubmenu('mobileProducts')">
+      <a href="EITS_Products.html">Products</a>
+      <span class="mobile-caret">▾</span>
+    </div>
+    <div class="mobile-submenu">
+      <a href="EITS_Product_Retail_POS.html">Retail POS Solution</a>
+      <a href="EITS_Product_AutoParts_POS.html">Autoparts POS Solutions</a>
+      <a href="EITS_Product_Inventory.html">Inventory Management Solution</a>
+      <a href="EITS_Product_Payroll.html">Payroll Solution</a>
+      <a href="EITS_Product_Xero.html">Xero Accounting</a>
+      <a href="EITS_Product_Resort.html">Resort Management Solution</a>
+    </div>
+  </div>
+  <a href="EITS_About_Us.html">About</a>
+  <a href="EITS_B_Navy_Cyan_Premium.html#industries" onclick="toggleMenu()">Industries</a>
+  <a href="EITS_B_Navy_Cyan_Premium.html#xero" onclick="toggleMenu()">Xero</a>
+  <a href="EITS_Contact_Us.html">Contact</a>
 </div>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-bc"><a href="index.html">Home</a><span>›</span><span style="color:rgba(255,255,255,.65)">Contact Us</span></div>
+  <div class="hero-bc"><a href="EITS_B_Navy_Cyan_Premium.html">Home</a><span>›</span><span style="color:rgba(255,255,255,.65)">Contact Us</span></div>
   <div class="hero-pill">We Respond Within the Hour</div>
   <div class="hero-inner">
     <h1>Let's Talk About<br>Your <span>IT Needs</span></h1>
@@ -585,7 +653,7 @@ footer{background:#0A0E18;padding:56px 80px 28px}
     <div class="ft-col"><h5>Company</h5><ul>
       <li><a href="EITS_About_Us.html">About EITS</a></li>
       <li><a href="EITS_About_Us.html#team">Our Team</a></li>
-      <li><a href="index.html#industries">Industries</a></li>
+      <li><a href="EITS_B_Navy_Cyan_Premium.html#industries">Industries</a></li>
       <li><a href="#">Privacy Policy</a></li>
     </ul></div>
   </div>
@@ -609,6 +677,9 @@ window.addEventListener('scroll', () => {
 function toggleMenu() {
   document.getElementById('hamburger').classList.toggle('open');
   document.getElementById('mobMenu').classList.toggle('open');
+}
+function toggleSubmenu(id) {
+  document.getElementById(id).classList.toggle('open');
 }
 
 // Reveal
