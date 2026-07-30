@@ -18,13 +18,13 @@ html{scroll-behavior:smooth}
 body{font-family:var(--ff);color:var(--dark);background:var(--white);overflow-x:hidden}
 
 /* ── NAV ── */
-nav{background:var(--navy);padding:0 80px;height:78px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;transition:box-shadow .3s}
+nav{background:var(--navy);padding:0 80px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;transition:box-shadow .3s}
 nav.scrolled{box-shadow:0 4px 24px rgba(0,24,80,.5)}
 .logo-text{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;text-decoration:none}
 .logo-text span{color:var(--cyan)}
 /* NAV DROPDOWN */
 .nav-links{display:flex;gap:32px;list-style:none;align-items:center}
-.nav-item{position:relative;display:flex;align-items:center;height:78px}
+.nav-item{position:relative;display:flex;align-items:center;height:60px}
 .nav-item .caret{font-size:10px;margin-left:4px;color:rgba(255,255,255,.4);transition:transform .2s}
 .nav-item:hover .caret{transform:rotate(180deg)}
 .nav-item::after{content:'';position:absolute;top:100%;left:-16px;right:-16px;height:4px}
