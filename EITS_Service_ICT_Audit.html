@@ -15,7 +15,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--ff);color:var(--dark);background:var(--white);overflow-x:hidden}
-nav{background:var(--navy);padding:0 80px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;transition:box-shadow .3s}
+nav{background:var(--navy);padding:10px 80px;min-height:70px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;transition:box-shadow .3s}
 nav.scrolled{box-shadow:0 4px 24px rgba(0,24,80,.4)}
 .logo-text{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;letter-spacing:.02em;text-decoration:none}
 .logo-text span{color:var(--cyan)}
@@ -96,7 +96,7 @@ footer{background:#0A0E18;padding:56px 80px 28px}
 .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
 .ft-logo{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;margin-bottom:14px}
 .ft-logo span{color:var(--cyan)}
-.ft-brand p{font-size:12px;color:rgba(255,255,255,.32);line-height:1.8;max-width:240px}
+.ft-brand p{font-size:12px;color:#fff;line-height:1.8;max-width:240px}
 .ft-col h5{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px}
 .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .ft-col a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;transition:.2s}
@@ -181,7 +181,9 @@ footer{background:#0A0E18;padding:56px 80px 28px}
 
 
 <nav id="navbar">
-  <a href="index.html" class="logo-text">EITS<span>.</span>Fiji</a>
+  <a href="#" class="logo-link">
+  <img src="Express_IT_Solutions.svg" alt="EITS Fiji" height="60">
+</a>
   <ul class="nav-links">
     <li class="nav-item">
       <a href="EITS_Services.html" class="nav-link active">Services <span class="caret">▾</span></a>
@@ -206,8 +208,6 @@ footer{background:#0A0E18;padding:56px 80px 28px}
       </ul>
     </li>
     <li><a href="EITS_About_Us.html" class="nav-link">About</a></li>
-    <li><a href="index.html#industries" class="nav-link">Industries</a></li>
-    <li><a href="index.html#xero" class="nav-link">Xero</a></li>
     <li><a href="EITS_Contact_Us.html" class="nav-link">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -444,8 +444,10 @@ footer{background:#0A0E18;padding:56px 80px 28px}
 
 <footer>
   <div class="ft-grid">
-    <div>
-      <div class="ft-logo">EITS<span>.</span>Fiji</div>
+    <div class="ft-brand">
+      <div class="ft-logo">
+        <img src="Express_IT_Solutions.svg" alt="EITS Fiji" height="60">
+      </div>
       <p>Fiji's trusted managed IT, cybersecurity, cloud, software development and Xero advisory partner. 22 Disraeli Road, Suva, Fiji.</p>
     </div>
     <div class="ft-col"><h5>Services</h5><ul>
