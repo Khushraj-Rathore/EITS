@@ -267,7 +267,7 @@ footer{background:#0A0E18;padding:56px 80px 28px}
 .ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
 .ft-logo{font-family:var(--fd);font-size:22px;font-weight:900;color:#fff;margin-bottom:14px}
 .ft-logo span{color:var(--cyan)}
-.ft-brand p{font-size:12px;color:rgba(255,255,255,.32);line-height:1.8;max-width:240px}
+.ft-brand p{font-size:12px;color:#fff;line-height:1.8;max-width:240px}
 .ft-col h5{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:16px}
 .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .ft-col a{font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;transition:.2s}
@@ -288,7 +288,9 @@ footer{background:#0A0E18;padding:56px 80px 28px}
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="index.html" class="logo-text">EITS<span>.</span>Fiji</a>
+  <a href="#" class="logo-link">
+    <img src="Express_IT_Solutions.svg" alt="EITS Fiji" height="60">
+</a>
   <ul class="nav-links">
     <li class="nav-item">
       <a href="EITS_Services.html" class="nav-link">Services <span class="caret">▾</span></a>
@@ -313,8 +315,6 @@ footer{background:#0A0E18;padding:56px 80px 28px}
       </ul>
     </li>
     <li><a href="EITS_About_Us.html" class="active">About</a></li>
-    <li><a href="index.html#industries">Industries</a></li>
-    <li><a href="index.html#xero">Xero</a></li>
     <li><a href="EITS_Contact_Us.html">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -764,8 +764,10 @@ footer{background:#0A0E18;padding:56px 80px 28px}
 <!-- FOOTER -->
 <footer>
   <div class="ft-grid">
-    <div>
-      <div class="ft-logo">EITS<span>.</span>Fiji</div>
+    <div class="ft-brand">
+      <div class="ft-logo">
+        <img src="Express_IT_Solutions.svg" alt="EITS Fiji" height="36">
+      </div>
       <p>Fiji's trusted managed IT services, cybersecurity, cloud and Xero advisory partner. Based in Suva at 22 Disraeli Road, serving all of Fiji and the Pacific.</p>
     </div>
     <div class="ft-col"><h5>Services</h5><ul>
